@@ -1,20 +1,14 @@
-Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent any
-    tools { 
-        maven 'Maven 3.3.9' 
-        jdk 'jdk8' 
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
+        }
     }
     stages {
-        stage ('Initialize') {
+        stage('Build') { 
             steps {
-               echo 'This is a minimal pipeline.'
-            }
-        }
-
-        stage ('Build') {
-            steps {
-                echo 'This is a minimal pipeline.'
+                sh 'npm install' 
             }
         }
     }
