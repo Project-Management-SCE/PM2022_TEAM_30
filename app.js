@@ -153,6 +153,54 @@ app.post("/email", function(request, response) {
 });
 
 
+app.post("/forget", function(request, response) {
+  // create reusable transporter object using the default SMTP transport
+	const transporter = nodemailer.createTransport({
+		host: "smtp.gmail.com",
+		port: 465,
+		secure: true,
+		auth: {
+			user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+			pass: "qkqwywipqowxkpmf" // this should be your password
+		}
+	});
+  global.globalString = request.body.email;
+	var textBody = `To reset your password, please click on this link: http://localhost:3000/new-password.html  `;
+	var mail = {
+		from: "abbasmohammeds2.ma@gmail.com", // sender address
+		to: request.body.email, // list of receivers (THIS COULD BE A DIFFERENT ADDRESS or ADDRESSES SEPARATED BY COMMAS)
+		subject: "Rest a Password", // Subject line
+		text: textBody,
+	};
+	// send mail with defined transport object
+	transporter.sendMail(mail, function (err, info) {
+    
+		if(err) {
+			console.log(err);
+			response.json({ message: "message not sent: an error occured; check the server's console log" });
+		}
+		else {
+      console.log("HELLO");
+			response.json({ message: `message sent: ${info.messageId}` });
+		}
+	});
+});
+
+app.post("/rest", function(req, res) {
+  var new_password= req.body.new_password;
+  db.collection('users').updateOne(
+    { "email": globalString}, // Filter
+    {$set: {"password": new_password}}, // Update
+    {upsert: true}  // add document with req.body._id if not exists 
+    ,function(err) {
+      if (err) throw err;
+      else 
+      console.log("The password has changed");
+    });
+
+
+});
+
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
