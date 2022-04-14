@@ -39,11 +39,11 @@ app.post('/sign_up', function(req,res){
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
   var IsHelper = req.body.IsHelper;
-
+  
   var data = {
 		"firstname": firstname,
 		"lastname": lastname,
-    "username" : username,
+    "username" : username, 
 		"email": email,
 		"password":pass,
 		"phonenumber":phonenumber,
@@ -57,7 +57,7 @@ app.post('/sign_up', function(req,res){
     var data = {
       "firstname": firstname,
       "lastname": lastname,
-      "username" : username,
+      "username" : username, 
       "email": email,
       "password":pass,
       "phonenumber":phonenumber,
@@ -67,8 +67,8 @@ app.post('/sign_up', function(req,res){
       "cost_per_hour": cost_per_hour,
       "Desc" : Desc
     }
-}
-
+}  
+  
   db.collection('users').insertOne(data,function(err, collection){
 		if (err) throw err;
 		console.log("Record inserted Successfully");
@@ -94,21 +94,15 @@ app.post('/login', function (req, res) {
       if (err) throw err;
       var dbo = db.db("EVwaze");
       var query = { email: data.email };
-      console.log(query);
-
-			if (data.email == "admin" && data.password == "1234"){
-			console.log("success login an admin");
-		}
-		else{
-			bo.collection("users").find(query).toArray(function(err, result) {
+      if (data.email == "admin" && data.password == "1234"){
+        console.log("success login an admin");
+      }else{console.log(query);
+      dbo.collection("users").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log(result);
           if(result[0].password == data.password){
               if(result[0].IsHelper == null)
                 console.log("success login an user");
-						/*		app.get('/user',function(req,res){
-									res.render('Home_user',{style:'Home_user.css'} )
-								});*/
               else
                 console.log("success login an helper");
               }
@@ -118,6 +112,7 @@ app.post('/login', function (req, res) {
           }
           db.close();
       });}
+      
   });
 
 });
@@ -133,7 +128,7 @@ app.post("/email", function(request, response) {
 			pass: "qkqwywipqowxkpmf" // this should be your password
 		}
 	});
-
+  
 	var textBody = `FROM: ${request.body.name} EMAIL: ${request.body.email} MESSAGE: ${request.body.message}`;
 	var htmlBody = `<h2>Mail From Contact Form</h2><p>from: ${request.body.name} <a href="mailto:${request.body.email}">${request.body.email}</a></p><p>${request.body.message}</p>`;
 	var mail = {
@@ -145,7 +140,7 @@ app.post("/email", function(request, response) {
 	};
 	// send mail with defined transport object
 	transporter.sendMail(mail, function (err, info) {
-
+    
 		if(err) {
 			console.log(err);
 			response.json({ message: "message not sent: an error occured; check the server's console log" });
