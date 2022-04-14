@@ -177,6 +177,12 @@ app.post("/email", function(request, response) {
 	});
 });
 
+app.get("/new-password",function(req,res){
+  res.render('new-password',{style:'new-password.css'} );
+
+});
+
+
 
 app.post("/forget", function(request, response) {
   // create reusable transporter object using the default SMTP transport
