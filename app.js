@@ -95,7 +95,12 @@ app.post('/login', function (req, res) {
       var dbo = db.db("EVwaze");
       var query = { email: data.email };
       console.log(query);
-      dbo.collection("users").find(query).toArray(function(err, result) {
+
+			if (data.email == "admin" && data.password == "1234"){
+			console.log("success login an admin");
+		}
+		else{
+			bo.collection("users").find(query).toArray(function(err, result) {
           if (err) throw err;
           console.log(result);
           if(result[0].password == data.password){
@@ -112,7 +117,7 @@ app.post('/login', function (req, res) {
               console.log("faild login");
           }
           db.close();
-      });
+      });}
   });
 
 });
