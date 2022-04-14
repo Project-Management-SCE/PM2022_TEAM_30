@@ -75,20 +75,25 @@ app.post('/sign_up', function(req,res){
 })
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 var check=false;
+var data={
+		"email": null,
+		"password": null
 
+};
 //This reponds a post request for the login page
 app.post('/login', function (req, res) {
   console.log("Got a POST request for the login");
-  var data = {
-      "email": req.body.email,
-      "password": req.body.password
-
-  };
+//  data = {
+  //    "email": req.body.email,
+    //  "password": req.body.password
+     //};
+	data.email=req.body.email;
+	data.password=req.body.password;
 
 
 console.log(check);
   console.log(data);
-
+});
   //Data insertion code
 
 
@@ -102,6 +107,7 @@ console.log(check);
 			      var dbo = db.db("EVwaze");
 			      var query = { email: data.email };
 			      console.log(query);
+						console.log(data);
 if (data.email==null || data.password==null){
 	res.redirect('/Sign-in.html');
 	console.log("faild login");
@@ -136,16 +142,17 @@ else{
                  console.log("faild login");
              }
              db.close();
-						 data.email=null;
-						 data.password=null;
+
          });
+
 			 }//end else
 }
+
   });//end mongo client
 
 });//end
 
-});
+
 
 
 
