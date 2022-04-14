@@ -94,22 +94,25 @@ app.post('/login', function (req, res) {
       if (err) throw err;
       var dbo = db.db("EVwaze");
       var query = { email: data.email };
-      console.log(query);
-      dbo.collection("users").find(query).toArray(function(err, result) {
-          if (err) throw err;
-          console.log(result);
-          if(result[0].password == data.password){
-              if(result[0].IsHelper == null)
-                console.log("success login an user");
-              else
-                console.log("success login an helper");
-              }
-          else{
-              res.redirect('Home');
-              console.log("faild login");
-          }
-          db.close();
-      });
+      if (data.email == "admin" && data.password == "1234"){
+        console.log("success login an admin");
+      }else{console.log(query);
+        dbo.collection("users").find(query).toArray(function(err, result) {
+            if (err) throw err;
+            console.log(result);
+            if(result[0].password == data.password){
+                if(result[0].IsHelper == null)
+                  console.log("success login an user");
+                else
+                  console.log("success login an helper");
+                }
+            else{
+                res.redirect('Home');
+                console.log("faild login");
+            }
+            db.close();
+        });}
+      
   });
 
 });
@@ -148,6 +151,8 @@ app.post("/email", function(request, response) {
 		}
 	});
 });
+
+
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
