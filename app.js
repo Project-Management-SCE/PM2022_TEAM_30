@@ -126,13 +126,13 @@ else{
              console.log(result);
              if(result[0].password == data.password){
                  if(result[0].IsHelper == null){
-                   console.log("success login an user");
+                   console.log("success login an user ");
 									 user_analyzer="user";
-									res.render('Home_user',{style:'Home_user.css'} )
+									res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
 								 }
                  else{
 								 user_analyzer="helper";
-								 res.render('Home_helper',{style:'Home_helper.css'} )
+								 res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
                    console.log("success login an helper");
                  }
 							 }
