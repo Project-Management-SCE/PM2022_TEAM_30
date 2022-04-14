@@ -101,7 +101,9 @@ app.post('/login', function (req, res) {
           if(result[0].password == data.password){
               if(result[0].IsHelper == null)
                 console.log("success login an user");
-								
+						/*		app.get('/user',function(req,res){
+									res.render('Home_user',{style:'Home_user.css'} )
+								});*/
               else
                 console.log("success login an helper");
               }
