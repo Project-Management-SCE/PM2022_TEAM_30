@@ -23,12 +23,10 @@ app.use(bodyParser.urlencoded({
 
 app.set("view engine","ejs");
 app.get('/', function (req, res) {
-
-
   res.render('Home',{style:'Home.css'} );
-
 });
-//Post an Users
+
+//Post an Users/////////////////////////////////////////////////////////////////////
 app.post('/sign_up', function(req,res){
 
   var firstname = req.body.firstname;
@@ -75,6 +73,8 @@ app.post('/sign_up', function(req,res){
 	});
 	return res.redirect('signup_success.html');
 })
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+var check=false;
 
 //This reponds a post request for the login page
 app.post('/login', function (req, res) {
@@ -82,8 +82,11 @@ app.post('/login', function (req, res) {
   var data = {
       "email": req.body.email,
       "password": req.body.password
+
   };
 
+
+console.log(check);
   console.log(data);
 
   //Data insertion code
@@ -93,12 +96,17 @@ app.post('/login', function (req, res) {
 				var MongoClient = require('mongodb').MongoClient;
 			  var url = "mongodb://localhost:27017/";
 				var user_analyzer="";
+
 			  MongoClient.connect(url, function(err, db) {
 			      if (err) throw err;
 			      var dbo = db.db("EVwaze");
 			      var query = { email: data.email };
 			      console.log(query);
-
+if (data.email==null || data.password==null){
+	res.redirect('/Sign-in.html');
+	console.log("faild login");
+}
+else{
 			if (data.email == "admin" && data.password == "1234"){
 				user_analyzer="admin";
 				res.render('Home_Admin',{style:'Home_Admin.css'} );
@@ -106,6 +114,7 @@ app.post('/login', function (req, res) {
          console.log("success login an admin");
        }
 			 else{console.log(query);
+
          dbo.collection("users").find(query).toArray(function(err, result) {
              if (err) throw err;
              console.log(result);
@@ -113,33 +122,32 @@ app.post('/login', function (req, res) {
                  if(result[0].IsHelper == null){
                    console.log("success login an user");
 									 user_analyzer="user";
-
-									// window.location.herf="/Home_user.html";
 									res.render('Home_user',{style:'Home_user.css'} )
-
-									 //res.send('<script>window.location.href="/Home_user.html";</script>');
-
 								 }
                  else{
 								 user_analyzer="helper";
 								 res.render('Home_helper',{style:'Home_helper.css'} )
                    console.log("success login an helper");
-                 }}
+                 }
+							 }
             else{
 
-                 res.redirect('Home');
+                 res.redirect('/Sign-in.html');
                  console.log("faild login");
              }
              db.close();
-         });}
+						 data.email=null;
+						 data.password=null;
+         });
+			 }//end else
+}
+  });//end mongo client
 
-  });
+});//end
 
 });
 
 
-
-});
 
 
 app.post("/email", function(request, response) {
@@ -196,7 +204,7 @@ app.post("/forget", function(request, response) {
 		}
 	});
   global.globalString = request.body.email;
-	var textBody = `To reset your password, please click on this link: http://localhost:3000/new-password.html  `;
+	var textBody = `To reset your password, please click on this link: http://localhost:3000/new-password  `;
 	var mail = {
 		from: "abbasmohammeds2.ma@gmail.com", // sender address
 		to: request.body.email, // list of receivers (THIS COULD BE A DIFFERENT ADDRESS or ADDRESSES SEPARATED BY COMMAS)
