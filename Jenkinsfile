@@ -1,20 +1,23 @@
+// pipline script
 pipeline {
     agent {
         docker {
-            image 'node:lts-bullseye-slim'
-            args '-p 3000:3000'
+            //version maven 
+            image 'maven:3-alpine' 
+            args '-v /root/.m2:/root/.m2' 
         }
     }
+
+
+//Log stages ( step by step)
+
     stages {
-        stage('Build') {
+
+       // Build Project - the build target is removed before a new build, add the clean target.
+        stage('Build') { 
             steps {
-                sh 'npm install'
+                sh 'mvn clean install'
             }
         }
-        stage('Test') { 
-            steps {
-                sh './jenkins/scripts/test.sh' 
-            }
-        }
+        
     }
-}
