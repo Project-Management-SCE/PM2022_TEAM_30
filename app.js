@@ -87,40 +87,60 @@ app.post('/login', function (req, res) {
   console.log(data);
 
   //Data insertion code
-  var MongoClient = require('mongodb').MongoClient;
-  var url = "mongodb://localhost:27017/";
 
-  MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("EVwaze");
-      var query = { email: data.email };
-      console.log(query);
+
+			app.get('/login', function (req, res){
+				var MongoClient = require('mongodb').MongoClient;
+			  var url = "mongodb://localhost:27017/";
+				var user_analyzer="";
+			  MongoClient.connect(url, function(err, db) {
+			      if (err) throw err;
+			      var dbo = db.db("EVwaze");
+			      var query = { email: data.email };
+			      console.log(query);
 
 			if (data.email == "admin" && data.password == "1234"){
-			console.log("success login an admin");
-		}
-		else{
-			bo.collection("users").find(query).toArray(function(err, result) {
-          if (err) throw err;
-          console.log(result);
-          if(result[0].password == data.password){
-              if(result[0].IsHelper == null)
-                console.log("success login an user");
-						/*		app.get('/user',function(req,res){
+				user_analyzer="admin";
+				res.render('Home_Admin',{style:'Home_Admin.css'} );
+
+         console.log("success login an admin");
+       }
+			 else{console.log(query);
+         dbo.collection("users").find(query).toArray(function(err, result) {
+             if (err) throw err;
+             console.log(result);
+             if(result[0].password == data.password){
+                 if(result[0].IsHelper == null){
+                   console.log("success login an user");
+									 user_analyzer="user";
+
+									// window.location.herf="/Home_user.html";
 									res.render('Home_user',{style:'Home_user.css'} )
-								});*/
-              else
-                console.log("success login an helper");
-              }
-          else{
-              res.redirect('Home');
-              console.log("faild login");
-          }
-          db.close();
-      });}
+
+									 //res.send('<script>window.location.href="/Home_user.html";</script>');
+
+								 }
+                 else{
+								 user_analyzer="helper";
+								 res.render('Home_helper',{style:'Home_helper.css'} )
+                   console.log("success login an helper");
+                 }}
+            else{
+
+                 res.redirect('Home');
+                 console.log("faild login");
+             }
+             db.close();
+         });}
+
   });
 
 });
+
+
+
+});
+
 
 app.post("/email", function(request, response) {
   // create reusable transporter object using the default SMTP transport
