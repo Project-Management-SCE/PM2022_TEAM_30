@@ -119,8 +119,12 @@ if (data.email==null || data.password==null){
 									 user_analyzer="user";
 									res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
 								 }
-              /////////////////////////////////helper
-							/////////////////////////////////
+                 else{///////////////////helper
+								 user_analyzer="helper";
+								 res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
+                   console.log("success login an helper");
+                 }
+							 }
             else{
 
                  res.redirect('/Sign-in.html');
