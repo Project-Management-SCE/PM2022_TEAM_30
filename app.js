@@ -195,6 +195,40 @@ app.post("/rest", function(req, res) {
 
 });
 
+app.post("/email", function(request, response) {
+  // create reusable transporter object using the default SMTP transport
+	const transporter = nodemailer.createTransport({
+		host: "smtp.gmail.com",
+		port: 465,
+		secure: true,
+		auth: {
+			user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+			pass: "qkqwywipqowxkpmf" // this should be your password
+		}
+	});
+
+	var textBody = `FROM: ${request.body.name} EMAIL: ${request.body.email} MESSAGE: ${request.body.message}`;
+	var htmlBody = `<h2>Mail From Contact Form</h2><p>from: ${request.body.name} <a href="mailto:${request.body.email}">${request.body.email}</a></p><p>${request.body.message}</p>`;
+	var mail = {
+		from: request.body.name, // sender address
+		to: "abbasmohammeds2.ma@gmail.com", // list of receivers (THIS COULD BE A DIFFERENT ADDRESS or ADDRESSES SEPARATED BY COMMAS)
+		subject: "Mail From Contact Form", // Subject line
+		text: textBody,
+		html: htmlBody
+	};
+	// send mail with defined transport object
+	transporter.sendMail(mail, function (err, info) {
+
+		if(err) {
+			console.log(err);
+			response.json({ message: "message not sent: an error occured; check the server's console log" });
+		}
+		else {
+      console.log("HELLO");
+			response.json({ message: `message sent: ${info.messageId}` });
+		}
+	});
+});
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
