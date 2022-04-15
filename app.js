@@ -26,6 +26,7 @@ app.get('/', function (req, res) {
   res.render('Home',{style:'Home.css'} );
 });
 
+//////////////////////////////////////////////sign up as a user///////////////////////////////////////////////////
 app.post('/sign_up', function(req,res){
 
   var firstname = req.body.firstname;
@@ -47,7 +48,24 @@ app.post('/sign_up', function(req,res){
 		"address":address,
     "IsHelper":IsHelper
 	}
-  
+  if (req.body.IsHelper) {
+    var Supported_Areas =req.body.Supported_Areas;
+    var cost_per_hour =req.body.cost_per_hour;
+    var Desc =req.body.Desc;
+    var data = {
+      "firstname": firstname,
+      "lastname": lastname,
+      "username" : username,
+      "email": email,
+      "password":pass,
+      "phonenumber":phonenumber,
+      "address":address,
+      "IsHelper":IsHelper,
+      "Supported_Areas": Supported_Areas,
+      "cost_per_hour": cost_per_hour,
+      "Desc" : Desc
+    }
+}
 
   db.collection('users').insertOne(data,function(err, collection){
 		if (err) throw err;
@@ -55,7 +73,6 @@ app.post('/sign_up', function(req,res){
 	});
 	return res.redirect('signup_success.html');
 })
-
 
 
 
