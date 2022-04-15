@@ -26,6 +26,36 @@ app.get('/', function (req, res) {
   res.render('Home',{style:'Home.css'} );
 });
 
+app.post('/sign_up', function(req,res){
+
+  var firstname = req.body.firstname;
+	var lastname = req.body.lastname;
+  var username = req.body.username;
+	var email =req.body.email;
+	var pass = req.body.password;
+	var phonenumber =req.body.phonenumber;
+	var address =req.body.address;
+  var IsHelper = req.body.IsHelper;
+
+  var data = {
+		"firstname": firstname,
+		"lastname": lastname,
+    "username" : username,
+		"email": email,
+		"password":pass,
+		"phonenumber":phonenumber,
+		"address":address,
+    "IsHelper":IsHelper
+	}
+  
+
+  db.collection('users').insertOne(data,function(err, collection){
+		if (err) throw err;
+		console.log("Record inserted Successfully");
+	});
+	return res.redirect('signup_success.html');
+})
+
 
 
 
