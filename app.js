@@ -74,6 +74,69 @@ app.post('/sign_up', function(req,res){
 	return res.redirect('signup_success.html');
 })
 
+//This reponds a post request for the login page
+app.post('/login', function (req, res) {
+  console.log("Got a POST request for the login");
+//  data = {
+  //    "email": req.body.email,
+    //  "password": req.body.password
+     //};
+	data.email=req.body.email;
+	data.password=req.body.password;
+
+
+console.log(check);
+  console.log(data);
+});
+  //Data insertion code
+
+
+			app.get('/login', function (req, res){
+				var MongoClient = require('mongodb').MongoClient;
+			  var url = "mongodb://localhost:27017/";
+				var user_analyzer="";
+
+			  MongoClient.connect(url, function(err, db) {
+			      if (err) throw err;
+			      var dbo = db.db("EVwaze");
+			      var query = { email: data.email };
+			      console.log(query);
+						console.log(data);
+if (data.email==null || data.password==null){
+	res.redirect('/Sign-in.html');
+	console.log("faild login");
+}//////////////////////////////////admin
+
+			 /////////////////////////////////////////////////////
+			 else{console.log(query);
+
+         dbo.collection("users").find(query).toArray(function(err, result) {
+             if (err) throw err;
+             console.log(result);
+             if(result[0].password == data.password){
+                 if(result[0].IsHelper == null){
+                   console.log("success login an user ");
+									 user_analyzer="user";
+									res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
+								 }
+              /////////////////////////////////helper
+							/////////////////////////////////
+            else{
+
+                 res.redirect('/Sign-in.html');
+                 console.log("faild login");
+             }
+             db.close();
+
+         });
+
+			 }//end else
+}
+
+  });//end mongo client
+
+});//end
+
 
 
 app.listen(3000,function(){
