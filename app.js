@@ -105,9 +105,14 @@ console.log(check);
 if (data.email==null || data.password==null){
 	res.redirect('/Sign-in.html');
 	console.log("faild login");
-}//////////////////////////////////admin
+}
+else{
+			if (data.email == "admin" && data.password == "1234"){
+				user_analyzer="admin";
+				res.render('Home_Admin',{style:'Home_Admin.css'} );
 
-			 /////////////////////////////////////////////////////
+         console.log("success login an admin");
+       }
 			 else{console.log(query);
 
          dbo.collection("users").find(query).toArray(function(err, result) {
@@ -119,7 +124,7 @@ if (data.email==null || data.password==null){
 									 user_analyzer="user";
 									res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
 								 }
-                 else{///////////////////helper
+                 else{
 								 user_analyzer="helper";
 								 res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
                    console.log("success login an helper");
@@ -140,8 +145,6 @@ if (data.email==null || data.password==null){
   });//end mongo client
 
 });//end
-
-
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
