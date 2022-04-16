@@ -248,7 +248,39 @@ app.post("/rest", function(req, res) {
 });
 
 
+//////update details by username/////
+app.post("/update-user", function(req, res) {
+  var firstname = req.body.firstname;
+	var lastname = req.body.lastname;
+  var username = req.body.username;
+	var email =req.body.email;
+	var pass = req.body.password;
+	var phonenumber =req.body.phonenumber;
+	var address =req.body.address;
+  var IsHelper = null;
 
+  var data = {
+		"firstname": firstname,
+		"lastname": lastname,
+		"email": email,
+		"password":pass,
+		"phonenumber":phonenumber,
+		"address":address,
+    "IsHelper":IsHelper
+	}
+  db.collection('users').updateOne(
+    { "username": username}, // Filter
+    {$set: data}, // Update
+    {upsert: true}  // add document with req.body._id if not exists
+    ,function(err) {
+      if (err) throw err;
+      else
+      console.log("The details has updated");
+    });
+
+
+});
+//////end///
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
