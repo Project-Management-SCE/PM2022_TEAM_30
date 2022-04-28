@@ -95,7 +95,7 @@ app.get("/Helper",function(req,res){
 
 ////////////////////////////////////////////////////////////////////////
 //This reponds a post request for the login page
-app.post('/logged', function (req, res) {
+app.post('/login', function (req, res) {
   console.log("Got a POST request for the login");
 //  data = {
   //    "email": req.body.email,
@@ -111,7 +111,7 @@ console.log(check);
   //Data insertion code
 
 
-			app.get('/login', function (req, res){
+			app.get('/logged', function (req, res){
 				var MongoClient = require('mongodb').MongoClient;
 			  var url = "mongodb://localhost:27017/";
 				var user_analyzer="";
@@ -129,7 +129,8 @@ if (data.email==null || data.password==null){
 else{
 			if (data.email == "admin" && data.password == "1234"){
 				user_analyzer="admin";
-				res.render('Home_Admin',{style:'Home_Admin.css'} );
+				res.redirect("/Admin");
+				//res.render('Home_Admin',{style:'Home_Admin.css'} );
 
          console.log("success login an admin");
        }
@@ -142,11 +143,15 @@ else{
                  if(result[0].IsHelper == null){
                    console.log("success login an user ");
 									 user_analyzer="user";
-									res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
+									 res.redirect("/User");
+
+								//	res.render('Home_user',{style:'Home_user.css' , username: result[0].username} )
 								 }
                  else{
 								 user_analyzer="helper";
-								 res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
+								 res.redirect("/Helper");
+
+								// res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
                    console.log("success login an helper");
                  }
 							 }
