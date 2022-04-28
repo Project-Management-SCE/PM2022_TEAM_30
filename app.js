@@ -80,8 +80,22 @@ var data={
 		"password": null
 
 };
+
+
+//users domain//////////////////////////////////////////////////////////
+app.get("/Admin",function(req,res){
+	res.render('Home_Admin',{style:'Home_Admin.css'} );
+});
+app.get("/User",function(req,res){
+	res.render('Home_user',{style:'Home_user.css'} );
+});
+app.get("/Helper",function(req,res){
+	res.render('Home_helper',{style:'Home_helper.css'} );
+});
+
+////////////////////////////////////////////////////////////////////////
 //This reponds a post request for the login page
-app.post('/login', function (req, res) {
+app.post('/logged', function (req, res) {
   console.log("Got a POST request for the login");
 //  data = {
   //    "email": req.body.email,
