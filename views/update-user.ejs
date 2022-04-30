@@ -81,14 +81,14 @@
               <label for="text-dfa6" class="u-label">Last Name</label>
               <input type="text" value="<%= lastnamex %>"placeholder="Enter your Last name" id="text-dfa6" name="lastname" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
             </div>
-            <div class="u-form-group u-label-top u-form-group-3">
+            <!--div class="u-form-group u-label-top u-form-group-3">
               <label for="text-8f8c" class="u-label">user name</label>
               <input type="text" value="<%= usernamex %>"placeholder="Enter your User name" id="text" name="username" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
-            </div>
-            <div class="u-form-email u-form-group u-label-top">
+            </div-->
+            <!--div class="u-form-email u-form-group u-label-top">
               <label for="email-2280" class="u-label">Email</label>
               <input type="email" value="<%= emailx %>"placeholder="Enter a valid email address" id="email" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
-            </div>
+            </div-->
             <div class="u-form-group u-label-top u-form-group-5">
               <label for="text-5c5c" class="u-label">Password</label>
               <input type="text" value="<%= passwordx %>"placeholder="Enter your Password" id="password" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
@@ -102,15 +102,12 @@
               <input type="text" value= "<%= addressx %>"placeholder="Enter your address" id="address" name="address" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-align-left u-form-group u-form-submit u-label-top">
-              <input type="submit" value="submit" class="u-form-control-hidden">
-              <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
+              <input type="submit"  value="submit" class="u-form-control-hidden">
+              <a href="#" onclick="success()" class="u-btn u-btn-submit u-button-style">Submit</a>
+<script>function success(){
+alert('your profile updated!')}</script>
             </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
             <div class="u-form-send-message u-form-send-success"> your profile updated! </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to your update your profile,refresh and  try again !. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
       </div>
