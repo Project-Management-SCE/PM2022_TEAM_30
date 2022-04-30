@@ -172,6 +172,12 @@ app.get("/UpdateAdmin",function(req,res){
 				addressx : address,} );
 });
 
+app.get("/users",function(req,res){
+	var cursor=db.collection('users').find().toArray(function(err,result){
+		res.render('users',{style:'users.css',data_res:result});
+
+	});
+});
 
 
 
