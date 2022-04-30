@@ -388,8 +388,8 @@ app.post("/update-user", function(req, res) {
     {upsert: true}  // add document with req.body._id if not exists
     ,function(err) {
       if (err) throw err;
-      else
-      console.log("The details has updated");
+      else{
+      console.log("The details has updated");}
     });
 
 

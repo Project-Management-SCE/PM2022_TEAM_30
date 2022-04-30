@@ -66,7 +66,7 @@
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-        <p class="u-align-left u-text u-text-default u-text-grey-30 u-text-2">,Welcome User</p>
+        <p class="u-align-left u-text u-text-default u-text-grey-30 u-text-2">,Welcome <%= firstnamex %> <%= lastnamex %></p>
       </div></header>
     <section class="u-clearfix u-palette-1-light-2 u-section-1" id="sec-4431">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -75,38 +75,38 @@
           <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
             <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top">
               <label for="name-2280" class="u-label">First Name</label>
-              <input type="text" placeholder="Enter your  First name" id="name-2280" name="first_name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+              <input type="text" value="<%= firstnamex %>"placeholder="Enter your  First name" id="name-2280" name="first_name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-form-group u-form-partition-factor-2 u-label-top u-form-group-2">
               <label for="text-dfa6" class="u-label">Last Name</label>
-              <input type="text" placeholder="Enter your Last name" id="text-dfa6" name="last_name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+              <input type="text" value="<%= lastnamex %>"placeholder="Enter your Last name" id="text-dfa6" name="last_name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
             </div>
             <div class="u-form-group u-label-top u-form-group-3">
               <label for="text-8f8c" class="u-label">user name</label>
-              <input type="text" placeholder="Enter your User name" id="text-8f8c" name="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
+              <input type="text" value="<%= usernamex %>"placeholder="Enter your User name" id="text-8f8c" name="text" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
             </div>
             <div class="u-form-email u-form-group u-label-top">
               <label for="email-2280" class="u-label">Email</label>
-              <input type="email" placeholder="Enter a valid email address" id="email-2280" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+              <input type="email" value="<%= emailx %>"placeholder="Enter a valid email address" id="email-2280" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-form-group u-label-top u-form-group-5">
               <label for="text-5c5c" class="u-label">Password</label>
-              <input type="text" placeholder="Enter your Password" id="text-5c5c" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
+              <input type="text" value="<%= passwordx %>"placeholder="Enter your Password" id="text-5c5c" name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required">
             </div>
             <div class="u-form-group u-label-top u-form-group-6">
               <label for="text-0f75" class="u-label">Phone Number</label>
-              <input type="text" placeholder="Enter your Phone Number" id="text-0f75" name="phone number" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required" maxlength="10">
+              <input type="text" value="<%= phonenumberx %>"placeholder="Enter your Phone Number" id="text-0f75" name="phone number" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required" maxlength="10">
             </div>
             <div class="u-form-address u-form-group u-label-top u-form-group-7">
               <label for="address-b7ee" class="u-label">Address</label>
-              <input type="text" placeholder="Enter your address" id="address-b7ee" name="address" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+              <input type="text" value= "<%= addressx %>"placeholder="Enter your address" id="address-b7ee" name="address" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
             </div>
             <div class="u-align-left u-form-group u-form-submit u-label-top">
               <input type="submit" value="submit" class="u-form-control-hidden">
               <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
             </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+            <div class="u-form-send-message u-form-send-success"> your profile updated! </div>
+            <div class="u-form-send-error u-form-send-message"> Unable to your update your profile,refresh and  try again !. </div>
             <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
