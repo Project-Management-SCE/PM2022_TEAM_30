@@ -10,7 +10,11 @@ db.on('error', console.log.bind(console, "connection error"));
 db.once('open', function(callback){
 	console.log("connection succeeded");
 })
-//variables///////////////////////////////////////////////////
+const app = express();
+app.use(express.static('views'));
+
+///////////////////////////////////////////////////
+
 var firstname ;
 var lastname ;
 var username ;
@@ -24,6 +28,64 @@ var Supported_Areas;
 var cost_per_hour;
 var Desc;
 
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSMongoose = require('@adminjs/mongoose')
+
+AdminJS.registerAdapter(AdminJSMongoose)
+
+const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
+	 phonenumber: String,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
+
+
+
+const adminJs = new AdminJS({
+//  databases: ['mongoose'],
+  rootPath: '/admin',
+	resources: [User],
+
+
+})
+//import { withLogout } from "./authentication/logout.handler";
+
+const ADMIN={
+	email: process.env.ADMIN_EMAIL || 'admin@evwise.com',
+	password: process.env.ADMIN_PASSWORD || '1234',
+}
+//const AdminJS = new AdminJS(adminJsOptions)
+const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
+	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
+	cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+	authenticate: async (email, password) => {
+		if(email===ADMIN.email && password=== ADMIN.password){
+			return ADMIN
+		}
+		return null;
+	}
+	//withLogout("/");
+
+
+
+
+})
+/*app.get("/admin", function(req, res) {
+ //req.session.destroy(() => {
+
+	res.redirect("/"); //Inside a callback… bulletproof!
+ //});
+});
+*/
+
+app.use(adminJs.options.rootPath, router)
+app.use(bodyParser.json());
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.get('/admin/login',function(req,res){
+	redirect('/');
+})
+//variable
 /*class userform {
 	constructor(firstname,lastname,username,email,pass,phonenumber,address,IsHelper=false,Supported_Areas=null,cost_per_hour=null,Desc=null) {
 		this.firstname=firstname;
@@ -46,14 +108,7 @@ var Desc;
 const users = [];*/
 //////////////////////////////////////////////////////////////
 
-const app = express();
-app.use(express.static('views'));
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
 
 
 app.set("view engine","ejs");
@@ -127,9 +182,9 @@ var data={
 
 
 //users domain//////////////////////////////////////////////////////////
-app.get("/Admin",function(req,res){
+/*app.get("/Admin",function(req,res){
 	res.render('Home_Admin',{style:'Home_Admin.css',firstnamex : firstname,lastnamex : lastname} );
-});
+});*/
 app.get("/User",function(req,res){
 	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname} );
 });
@@ -218,7 +273,7 @@ if (data.email==null || data.password==null){
 else{
 			if (data.email == "admin" && data.password == "1234"){
 				user_analyzer="admin";
-				res.redirect("/Admin");
+				res.redirect("/admin");
 				//res.render('Home_Admin',{style:'Home_Admin.css'} );
 
          console.log("success login an admin");
@@ -372,8 +427,8 @@ app.post("/rest", function(req, res) {
 app.post("/update-user", function(req, res) {
   var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
-  
-	
+  var username = req.body.username;
+	var email =req.body.email;
 	var pass = req.body.password;
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
@@ -401,13 +456,16 @@ app.post("/update-user", function(req, res) {
 
 });
 
-
+/*
 app.post("/update-Helper", function(req, res) {
-  	var firstname = req.body.firstname;
+  var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
+  var username = req.body.username;
+	var email =req.body.email;
 	var pass = req.body.password;
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
+  var IsHelper = "on";
 	var Supported_Areas=req.body.Supported_Areas;
 	var cost_per_hour=req.body.cost_per_hour;
 	var Desc=req.body.Desc;
@@ -425,7 +483,7 @@ app.post("/update-Helper", function(req, res) {
 		"Desc" : Desc
 	}
   db.collection('users').updateOne(
-    { "username": username}, // Filter
+    { "email": email}, // Filter
     {$set: data}, // Update
     {upsert: true}  // add document with req.body._id if not exists
     ,function(err) {
@@ -435,7 +493,7 @@ app.post("/update-Helper", function(req, res) {
     });
 
 
-});
+});*/
 //////end///
 
 app.listen(3000,function(){
