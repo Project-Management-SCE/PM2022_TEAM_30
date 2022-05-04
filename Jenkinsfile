@@ -1,29 +1,24 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+            image 'node:lts-buster-slim'
+            args '-p 3000:3000'
         }
     }
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
+                sh 'npm test'
             }
         }
         stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                sh 'npm test'
             }
         }
     }
