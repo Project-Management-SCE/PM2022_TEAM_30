@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&callback=initMap&v=weekly"
+          type="text/javascript"></script>
+</head> 
+<body>
+  <div id="map" style="width: 700px; height: 500px;"></div>
+
+  <script type="text/javascript">
+    var locations = [
+    ['שדרות דוד טוביהו 125, באר שבע', 31.250833096354167, 34.77165177394831, 9],
+    ['הנרייטה סאלד 4, באר שבע', 31.247768119945604, 34.80101254511203, 8],
+    ['שדרות ירושלים 10 , באר שבע', 31.24592706949211, 34.780006160457695, 7],
+    ['צומת אלי כהן, באר שבע', 31.244566991211297, 34.792046918130595, 6],
+    ['תוצרת הארץ 1', 31.220042118568568, 34.803669867078405, 5],
+    ['אזור תעשייה קרית יהודית', 31.222567867990843, 34.80155327730949, 4],
+    ['אברהם מאפו 7, באר שבע', 31.236186226232906, 34.77511486045786, 3],
+    ['שדרות אליהו נאוי, באר שבע', 31.249462799150137, 34.817866073948366, 2],
+    ['הנגרים 20, באר שבע', 31.243925383265427, 34.804344216275716, 1]
+    ];
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: new google.maps.LatLng(31, 35),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map,
+        icon: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+      });
+      
+      google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+</body>
+</html>
