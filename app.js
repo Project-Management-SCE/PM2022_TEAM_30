@@ -187,10 +187,10 @@ var data={
 	res.render('Home_Admin',{style:'Home_Admin.css',firstnamex : firstname,lastnamex : lastname} );
 });*/
 app.get("/User",function(req,res){
-	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname} );
+	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
 });
 app.get("/Helper",function(req,res){
-	res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname} );
+	res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email} );
 });
 app.get("/UpdateHelper",function(req,res){
 	res.render('update-helper',{style:'update-helper.css',
