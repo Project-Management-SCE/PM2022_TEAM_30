@@ -39,19 +39,16 @@ AdminJS.registerAdapter(AdminJSMongoose)
 
 
 const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
-	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
+ phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
+
 
 const adminJs = new AdminJS({
 //  databases: ['mongoose'],
   rootPath: '/admin',
-  
 	resources: [User],
-
-
 })
 
 const ADMIN={
-
 	email: process.env.ADMIN_EMAIL  || 'admin@evwise.com',
 	password: process.env.ADMIN_PASSWORD || '1234',
 }
@@ -67,8 +64,6 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 	}
 
 })
-
-
 
 app.use(adminJs.options.rootPath, router)
 app.use(bodyParser.json());
