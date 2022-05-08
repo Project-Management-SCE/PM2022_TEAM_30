@@ -58,16 +58,10 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 		}
 		return null;
 	}
-	//withLogout("/");
 
 })
-/*app.get("/admin", function(req, res) {
- //req.session.destroy(() => {
 
-	res.redirect("/"); //Inside a callback… bulletproof!
- //});
-});
-*/
+
 
 app.use(adminJs.options.rootPath, router)
 app.use(bodyParser.json());
@@ -78,6 +72,7 @@ app.use(bodyParser.urlencoded({
 app.get('/admin/login',function(req,res){
 	redirect('/');
 })
+
 //variable
 /*class userform {
 	constructor(firstname,lastname,username,email,pass,phonenumber,address,IsHelper=false,Supported_Areas=null,cost_per_hour=null,Desc=null) {
