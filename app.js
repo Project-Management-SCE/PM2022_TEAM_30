@@ -353,20 +353,25 @@ app.post("/email", function(request, response) {
 		subject: "Mail From Contact Form", // Subject line
 		text: textBody,
 		html: htmlBody
+
 	};
 	// send mail with defined transport object
+
 	transporter.sendMail(mail, function (err, info) {
 
 		if(err) {
 			console.log(err);
+
 			response.json({ message: "message not sent: an error occured; check the server's console log" });
 		}
 		else {
       console.log("HELLO");
+
 			response.json({ message: `message sent: ${info.messageId}` });
 		}
 	});
 });
+
 
 app.get("/new-password",function(req,res){
   res.render('new-password',{style:'new-password.css'} );
