@@ -457,16 +457,14 @@ app.post("/update-user", function(req, res) {
 
 });
 
-/*
+
 app.post("/update-Helper", function(req, res) {
   var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
-  var username = req.body.username;
-	var email =req.body.email;
 	var pass = req.body.password;
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
-  var IsHelper = "on";
+  	var IsHelper = "on";
 	var Supported_Areas=req.body.Supported_Areas;
 	var cost_per_hour=req.body.cost_per_hour;
 	var Desc=req.body.Desc;
@@ -474,7 +472,6 @@ app.post("/update-Helper", function(req, res) {
   var data = {
 		"firstname": firstname,
 		"lastname": lastname,
-		"email": email,
 		"password":pass,
 		"phonenumber":phonenumber,
 		"address":address,
@@ -484,7 +481,7 @@ app.post("/update-Helper", function(req, res) {
 		"Desc" : Desc
 	}
   db.collection('users').updateOne(
-    { "email": email}, // Filter
+    { "username": username}, // Filter
     {$set: data}, // Update
     {upsert: true}  // add document with req.body._id if not exists
     ,function(err) {
@@ -494,7 +491,7 @@ app.post("/update-Helper", function(req, res) {
     });
 
 
-});*/
+});
 //////end///
 
 app.listen(3000,function(){
