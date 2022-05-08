@@ -480,6 +480,7 @@ app.post("/update-Helper", function(req, res) {
 		"cost_per_hour": cost_per_hour,
 		"Desc" : Desc
 	}
+	
   db.collection('users').updateOne(
     { "username": username}, // Filter
     {$set: data}, // Update
