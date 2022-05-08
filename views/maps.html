@@ -4,7 +4,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Google Maps Multiple Markers</title>
- 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&callback=initMap&v=weekly"
+          type="text/javascript"></script>
 </head>
 <body>
   <div id="map" style="width:auto ; height: 500px  "></div>
@@ -43,7 +44,7 @@
         return function() {
 
           infowindow.setContent(locations[i][0]);
-
+          
           infowindow.open(map, marker);
         }
       })(marker, i));
