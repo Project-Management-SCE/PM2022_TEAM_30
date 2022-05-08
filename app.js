@@ -47,12 +47,11 @@ const adminJs = new AdminJS({
 
 })
 
-//import { withLogout } from "./authentication/logout.handler";
 
 const ADMIN={
 	email: process.env.ADMIN_EMAIL || 'admin@evwise.com',
 	password: process.env.ADMIN_PASSWORD || '1234',
-}
+} 
 //const AdminJS = new AdminJS(adminJsOptions)
 const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',

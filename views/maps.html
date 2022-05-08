@@ -4,11 +4,14 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Google Maps Multiple Markers</title>
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&callback=initMap&v=weekly"
           type="text/javascript"></script>
 </head>
 <body>
   <div id="map" style="width:auto ; height: 500px  "></div>
+
+
 
   <script type="text/javascript">
     var locations = [
@@ -23,13 +26,14 @@
     ['הנגרים 20, באר שבע', 31.243925383265427, 34.804344216275716, 1]
     ];
 
+
+
+
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 9,
       center: new google.maps.LatLng(31, 35),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-
-
 
     var infowindow = new google.maps.InfoWindow();
 
