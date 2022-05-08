@@ -62,12 +62,14 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 		}
 		return null;
 	}
-
 })
 
 app.use(adminJs.options.rootPath, router)
+
 app.use(bodyParser.json());
+
 app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
