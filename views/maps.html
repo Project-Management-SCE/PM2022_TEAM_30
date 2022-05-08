@@ -29,6 +29,8 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
+
+
     var infowindow = new google.maps.InfoWindow();
 
     var marker, i;
@@ -44,11 +46,11 @@
         return function() {
 
           infowindow.setContent(locations[i][0]);
-          
           infowindow.open(map, marker);
         }
       })(marker, i));
     }
+
   </script>
 </body>
 </html>

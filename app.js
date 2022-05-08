@@ -157,14 +157,7 @@ app.post('/sign_up', function(req,res){
       "Desc" : Desc
     }
 }
-/*
-form=new userform(data.firstname,data.lastname,data.username,data.email,data.password,data.phonenumber,data.address,data.IsHelper,data.Supported_Areas,data.cost_per_hour,data.Desc);
-users[users.length+1]=form;
-console.log("heeeeeeee");
-while(users!=null){
-	console.log("eeeeeeeeeeeeeeeeeeeeeeek");
-	users.toString();
-*/
+
 
 
   db.collection('users').insertOne(data,function(err, collection){
@@ -260,11 +253,11 @@ console.log(check);
 				var MongoClient = require('mongodb').MongoClient;
 			  var url = "mongodb://localhost:27017/";
 				var user_analyzer="";
+				MongoClient.connect(url, function(err, db) {
+			 		 if (err) throw err;
+			 		 var dbo = db.db("EVwaze");
+			 		 var query = { email: data.email };
 
-			  MongoClient.connect(url, function(err, db) {
-			      if (err) throw err;
-			      var dbo = db.db("EVwaze");
-			      var query = { email: data.email };
 			      console.log(query);
 						console.log(data);
 if (data.email==null || data.password==null){
