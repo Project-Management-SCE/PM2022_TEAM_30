@@ -35,12 +35,17 @@ const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSMongoose = require('@adminjs/mongoose')
 AdminJS.registerAdapter(AdminJSMongoose)
+
+
 const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
-	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
+	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
+
 const adminJs = new AdminJS({
 //  databases: ['mongoose'],
   rootPath: '/admin',
 	resources: [User],
+
+
 })
 
 const ADMIN={
@@ -72,29 +77,6 @@ app.use(bodyParser.urlencoded({
 app.get('/admin/login',function(req,res){
 	redirect('/');
 })
-
-//variable
-/*class userform {
-	constructor(firstname,lastname,username,email,pass,phonenumber,address,IsHelper=false,Supported_Areas=null,cost_per_hour=null,Desc=null) {
-		this.firstname=firstname;
-		this.lastname=lastname;
-		this.username=username;
-		this.email=email;
-		this.pass=pass
-		this.phonenumber=phonenumber;
-		this.address=address;
-		this.IsHelper=IsHelper;
-		this.Supported_Areas=Supported_Areas
-		this.cost_per_hour=cost_per_hour;
-		this.Desc=Desc;
-	}
-	toString(){
-		console.log(firstname,lastname,username,email,pass,phonenumber,address,IsHelper,Supported_Areas,cost_per_hour,Desc);
-	}
-
-}
-const users = [];*/
-//////////////////////////////////////////////////////////////
 
 
 
