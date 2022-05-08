@@ -28,7 +28,47 @@ var Supported_Areas;
 var cost_per_hour;
 var Desc;
 
+const AdminJS = require('adminjs')
+const AdminJSExpress = require('@adminjs/express')
+const AdminJSMongoose = require('@adminjs/mongoose')
 
+AdminJS.registerAdapter(AdminJSMongoose)
+
+const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
+	 phonenumber: String,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
+
+
+
+const adminJs = new AdminJS({
+//  databases: ['mongoose'],
+  rootPath: '/admin',
+	resources: [User],
+
+
+})
+
+//import { withLogout } from "./authentication/logout.handler";
+
+const ADMIN={
+	email: process.env.ADMIN_EMAIL || 'admin@evwise.com',
+	password: process.env.ADMIN_PASSWORD || '1234',
+}
+//const AdminJS = new AdminJS(adminJsOptions)
+const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
+	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
+	cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+	authenticate: async (email, password) => {
+		if(email===ADMIN.email && password=== ADMIN.password){
+			return ADMIN
+		}
+		return null;
+	}
+	//withLogout("/");
+
+
+
+
+})
 /*app.get("/admin", function(req, res) {
  //req.session.destroy(() => {
 
@@ -440,7 +480,7 @@ app.post("/update-Helper", function(req, res) {
 		"cost_per_hour": cost_per_hour,
 		"Desc" : Desc
 	}
-
+	
   db.collection('users').updateOne(
     { "username": username}, // Filter
     {$set: data}, // Update
