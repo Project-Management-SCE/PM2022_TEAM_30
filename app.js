@@ -37,16 +37,11 @@ const AdminJSMongoose = require('@adminjs/mongoose')
 AdminJS.registerAdapter(AdminJSMongoose)
 const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
 	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
-
 const adminJs = new AdminJS({
-
 //  databases: ['mongoose'],
   rootPath: '/admin',
 	resources: [User],
-
-
 })
-
 
 const ADMIN={
 
