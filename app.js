@@ -15,10 +15,6 @@ app.use(express.static('views'));
 
 ///////////////////////////////////////////////////
 
-
-
-
-
 var firstname ;
 var lastname ;
 var username ;
@@ -44,7 +40,7 @@ const User = mongoose.model('User', {firstname: String ,lastname: String ,userna
 
 const adminJs = new AdminJS ({
 
-//  databases: ['mongoose'],
+//  databases: ['mongoose'], 
   rootPath: '/admin', 
 	resources: [User],
 })
@@ -53,7 +49,7 @@ const ADMIN={
 	email: process.env.ADMIN_EMAIL  || 'admin@evwise.com',
 	password: process.env.ADMIN_PASSWORD || '1234',
 }
-//const AdminJS = new AdminJS(adminJsOptions)
+//const AdminJS =  new AdminJS(adminJsOptions)
 const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
 	cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
@@ -76,7 +72,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.get('/admin/login',function(req,res){
+app.get('/admin/login', function(req,res){
 
 	redirect('/'); 
 })
@@ -84,7 +80,7 @@ app.get('/admin/login',function(req,res){
 
 
 
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
 app.get('/', function (req, res) {
 
@@ -94,7 +90,7 @@ app.get('/', function (req, res) {
 //////////////////////////////////////////////sign up as a user///////////////////////////////////////////////////
 app.post('/sign_up', function(req,res){
 
-   firstname = req.body.firstname;
+   firstname =  req.body.firstname;
 	 lastname = req.body.lastname;
    username = req.body.username;
 	 email =req.body.email;
@@ -113,7 +109,7 @@ app.post('/sign_up', function(req,res){
 		"address":address,
     "IsHelper":IsHelper
 	}
-  if (req.body.IsHelper) {
+  if (req.body.IsHelper)  {
     Supported_Areas =req.body.Supported_Areas;
     cost_per_hour =req.body.cost_per_hour;
     Desc =req.body.Desc;
@@ -130,8 +126,9 @@ app.post('/sign_up', function(req,res){
       "cost_per_hour": cost_per_hour,
       "Desc" : Desc
     }
-}
 
+
+}
 
 
   db.collection('users').insertOne(data,function(err, collection){
