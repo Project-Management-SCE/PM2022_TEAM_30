@@ -77,7 +77,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.get('/admin/login',function(req,res){
-	
+
 	redirect('/'); 
 })
 
@@ -85,7 +85,9 @@ app.get('/admin/login',function(req,res){
 
 
 app.set("view engine","ejs");
+
 app.get('/', function (req, res) {
+
   res.render('Home',{style:'Home.css'} );
 });
 
