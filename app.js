@@ -37,9 +37,10 @@ AdminJS.registerAdapter(AdminJSMongoose)
 
 
 const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
-	 phonenumber: String,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
+	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
 
 const adminJs = new AdminJS({
+
 //  databases: ['mongoose'],
   rootPath: '/admin',
 	resources: [User],
@@ -50,7 +51,7 @@ const adminJs = new AdminJS({
 
 const ADMIN={
 
-	email: process.env.ADMIN_EMAIL || 'admin@evwise.com',
+	email: process.env.ADMIN_EMAIL  || 'admin@evwise.com',
 	password: process.env.ADMIN_PASSWORD || '1234',
 }
 //const AdminJS = new AdminJS(adminJsOptions)
@@ -301,6 +302,8 @@ else{
 								 user_analyzer="helper";
 								 res.redirect("/Helper");
 
+
+
 								// res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
                    console.log("success login an helper");
                  }
@@ -328,14 +331,15 @@ else{
 app.post("/email", function(request, response) {
 
   // create reusable transporter object using the default SMTP transport
-	
+
 	const transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
 		port: 465,
 		secure: true,
 
-		auth: {
-			user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+		auth: {	user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+
+
 			pass: "qkqwywipqowxkpmf" // this should be your password
 
 		}
