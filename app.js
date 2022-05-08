@@ -38,14 +38,14 @@ const AdminJSMongoose = require('@adminjs/mongoose')
 AdminJS.registerAdapter(AdminJSMongoose)
 
 
-const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
+const User = mongoose.model('User', {firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
  phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
 
 
-const adminJs = new AdminJS({
-	
+const adminJs = new AdminJS ({
+
 //  databases: ['mongoose'],
-  rootPath: '/admin',
+  rootPath: '/admin', 
 	resources: [User],
 })
 
@@ -77,7 +77,8 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.get('/admin/login',function(req,res){
-	redirect('/');
+	
+	redirect('/'); 
 })
 
 
@@ -147,9 +148,12 @@ var data={
 
 
 //users domain//////////////////////////////////////////////////////////
+
 /*app.get("/Admin",function(req,res){
 	res.render('Home_Admin',{style:'Home_Admin.css',firstnamex : firstname,lastnamex : lastname} );
 });*/
+
+
 app.get("/User",function(req,res){
 	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
 });
