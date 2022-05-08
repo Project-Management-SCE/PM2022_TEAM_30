@@ -43,6 +43,7 @@ const User = mongoose.model('User', { firstname: String ,lastname: String ,usern
 
 
 const adminJs = new AdminJS({
+	
 //  databases: ['mongoose'],
   rootPath: '/admin',
 	resources: [User],
@@ -56,8 +57,10 @@ const ADMIN={
 const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
 	cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+
 	authenticate: async (email, password) => {
 		if(email===ADMIN.email && password=== ADMIN.password){
+			
 			return ADMIN
 		}
 		return null;
