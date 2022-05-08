@@ -10,6 +10,20 @@
 <body>
   <div id="map" style="width:auto ; height: 500px  "></div>
 
+  <script type="text/javascript">
   
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: new google.maps.LatLng(31, 35),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    
+  </script>
 </body>
 </html>
