@@ -28,14 +28,13 @@ var Supported_Areas;
 var cost_per_hour;
 var Desc;
 
+
+
+
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSMongoose = require('@adminjs/mongoose')
-
 AdminJS.registerAdapter(AdminJSMongoose)
-
-
-
 const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
 	 phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
 
