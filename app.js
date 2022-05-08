@@ -15,6 +15,10 @@ app.use(express.static('views'));
 
 ///////////////////////////////////////////////////
 
+
+
+
+
 var firstname ;
 var lastname ;
 var username ;
@@ -28,9 +32,6 @@ var Supported_Areas;
 var cost_per_hour;
 var Desc;
 
-
-
-
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSMongoose = require('@adminjs/mongoose')
@@ -43,6 +44,7 @@ const User = mongoose.model('User', { firstname: String ,lastname: String ,usern
 const adminJs = new AdminJS({
 //  databases: ['mongoose'],
   rootPath: '/admin',
+  
 	resources: [User],
 
 
