@@ -281,10 +281,11 @@ else{
        }
 			 else{console.log(query);
 
-         dbo.collection("users").find(query).toArray(function(err, result) {
-             if (err) throw err;
-             console.log(result);
-             if(result[0].password == data.password){
+
+				 dbo.collection("users").find(query).toArray(function(err, result) {
+						 if (err) throw err;
+						 console.log(result);
+						 if(result[0].password == data.password){
 							 firstname=result[0].firstname;
 							 lastname= result[0].lastname;
 							 username= result[0].username ;
@@ -480,7 +481,7 @@ app.post("/update-Helper", function(req, res) {
 		"cost_per_hour": cost_per_hour,
 		"Desc" : Desc
 	}
-	
+
   db.collection('users').updateOne(
     { "username": username}, // Filter
     {$set: data}, // Update
