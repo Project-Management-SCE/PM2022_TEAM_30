@@ -31,96 +31,66 @@ var Desc;
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
 const AdminJSMongoose = require('@adminjs/mongoose')
-
 AdminJS.registerAdapter(AdminJSMongoose)
 
-const User = mongoose.model('User', { firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
-	 phonenumber: String,Supported_Areas: String, cost_per_hour: String, Desc: String,  })
+
+const User = mongoose.model('User', {firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
+ phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
 
 
+const adminJs = new AdminJS ({
 
-const adminJs = new AdminJS({
-//  databases: ['mongoose'],
-  rootPath: '/admin',
+//  databases: ['mongoose'], 
+  rootPath: '/admin', 
 	resources: [User],
-
-
 })
 
-//import { withLogout } from "./authentication/logout.handler";
-
 const ADMIN={
-	email: process.env.ADMIN_EMAIL || 'admin@evwise.com',
+	email: process.env.ADMIN_EMAIL  || 'admin@evwise.com',
 	password: process.env.ADMIN_PASSWORD || '1234',
 }
-//const AdminJS = new AdminJS(adminJsOptions)
+//const AdminJS =  new AdminJS(adminJsOptions)
 const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 	cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
 	cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+
 	authenticate: async (email, password) => {
 		if(email===ADMIN.email && password=== ADMIN.password){
+			
 			return ADMIN
 		}
 		return null;
 	}
-	//withLogout("/");
-
-
-
-
 })
-/*app.get("/admin", function(req, res) {
- //req.session.destroy(() => {
-
-	res.redirect("/"); //Inside a callback… bulletproof!
- //});
-});
-*/
 
 app.use(adminJs.options.rootPath, router)
+
 app.use(bodyParser.json());
+
 app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.get('/admin/login',function(req,res){
-	redirect('/');
+app.get('/admin/login', function(req,res){
+
+	redirect('/'); 
 })
-//variable
-/*class userform {
-	constructor(firstname,lastname,username,email,pass,phonenumber,address,IsHelper=false,Supported_Areas=null,cost_per_hour=null,Desc=null) {
-		this.firstname=firstname;
-		this.lastname=lastname;
-		this.username=username;
-		this.email=email;
-		this.pass=pass
-		this.phonenumber=phonenumber;
-		this.address=address;
-		this.IsHelper=IsHelper;
-		this.Supported_Areas=Supported_Areas
-		this.cost_per_hour=cost_per_hour;
-		this.Desc=Desc;
-	}
-	toString(){
-		console.log(firstname,lastname,username,email,pass,phonenumber,address,IsHelper,Supported_Areas,cost_per_hour,Desc);
-	}
-
-}
-const users = [];*/
-//////////////////////////////////////////////////////////////
 
 
 
 
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
+
 app.get('/', function (req, res) {
+
   res.render('Home',{style:'Home.css'} );
 });
 
 //////////////////////////////////////////////sign up as a user///////////////////////////////////////////////////
 app.post('/sign_up', function(req,res){
 
-   firstname = req.body.firstname;
+   firstname =  req.body.firstname;
 	 lastname = req.body.lastname;
    username = req.body.username;
 	 email =req.body.email;
@@ -139,7 +109,7 @@ app.post('/sign_up', function(req,res){
 		"address":address,
     "IsHelper":IsHelper
 	}
-  if (req.body.IsHelper) {
+  if (req.body.IsHelper)  {
     Supported_Areas =req.body.Supported_Areas;
     cost_per_hour =req.body.cost_per_hour;
     Desc =req.body.Desc;
@@ -156,15 +126,9 @@ app.post('/sign_up', function(req,res){
       "cost_per_hour": cost_per_hour,
       "Desc" : Desc
     }
+
+
 }
-/*
-form=new userform(data.firstname,data.lastname,data.username,data.email,data.password,data.phonenumber,data.address,data.IsHelper,data.Supported_Areas,data.cost_per_hour,data.Desc);
-users[users.length+1]=form;
-console.log("heeeeeeee");
-while(users!=null){
-	console.log("eeeeeeeeeeeeeeeeeeeeeeek");
-	users.toString();
-*/
 
 
   db.collection('users').insertOne(data,function(err, collection){
@@ -183,9 +147,12 @@ var data={
 
 
 //users domain//////////////////////////////////////////////////////////
+
 /*app.get("/Admin",function(req,res){
 	res.render('Home_Admin',{style:'Home_Admin.css',firstnamex : firstname,lastnamex : lastname} );
 });*/
+
+
 app.get("/User",function(req,res){
 	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
 });
@@ -260,11 +227,11 @@ console.log(check);
 				var MongoClient = require('mongodb').MongoClient;
 			  var url = "mongodb://localhost:27017/";
 				var user_analyzer="";
+				MongoClient.connect(url, function(err, db) {
+			 		 if (err) throw err;
+			 		 var dbo = db.db("EVwaze");
+			 		 var query = { email: data.email };
 
-			  MongoClient.connect(url, function(err, db) {
-			      if (err) throw err;
-			      var dbo = db.db("EVwaze");
-			      var query = { email: data.email };
 			      console.log(query);
 						console.log(data);
 if (data.email==null || data.password==null){
@@ -281,10 +248,11 @@ else{
        }
 			 else{console.log(query);
 
-         dbo.collection("users").find(query).toArray(function(err, result) {
-             if (err) throw err;
-             console.log(result);
-             if(result[0].password == data.password){
+
+				 dbo.collection("users").find(query).toArray(function(err, result) {
+						 if (err) throw err;
+						 console.log(result);
+						 if(result[0].password == data.password){
 							 firstname=result[0].firstname;
 							 lastname= result[0].lastname;
 							 username= result[0].username ;
@@ -310,6 +278,8 @@ else{
 								 user_analyzer="helper";
 								 res.redirect("/Helper");
 
+
+
 								// res.render('Home_helper',{style:'Home_helper.css' , username: result[0].username} )
                    console.log("success login an helper");
                  }
@@ -333,15 +303,21 @@ else{
 
 
 
+
 app.post("/email", function(request, response) {
+
   // create reusable transporter object using the default SMTP transport
+
 	const transporter = nodemailer.createTransport({
 		host: "smtp.gmail.com",
 		port: 465,
 		secure: true,
-		auth: {
-			user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+
+		auth: {	user: "abbasmohammeds2.ma@gmail.com", // this should be YOUR GMAIL account
+
+
 			pass: "qkqwywipqowxkpmf" // this should be your password
+
 		}
 	});
 
@@ -353,20 +329,25 @@ app.post("/email", function(request, response) {
 		subject: "Mail From Contact Form", // Subject line
 		text: textBody,
 		html: htmlBody
+
 	};
 	// send mail with defined transport object
+
 	transporter.sendMail(mail, function (err, info) {
 
 		if(err) {
 			console.log(err);
+
 			response.json({ message: "message not sent: an error occured; check the server's console log" });
 		}
 		else {
       console.log("HELLO");
+
 			response.json({ message: `message sent: ${info.messageId}` });
 		}
 	});
 });
+
 
 app.get("/new-password",function(req,res){
   res.render('new-password',{style:'new-password.css'} );
@@ -457,16 +438,14 @@ app.post("/update-user", function(req, res) {
 
 });
 
-/*
+
 app.post("/update-Helper", function(req, res) {
   var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
-  var username = req.body.username;
-	var email =req.body.email;
 	var pass = req.body.password;
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
-  var IsHelper = "on";
+  	var IsHelper = "on";
 	var Supported_Areas=req.body.Supported_Areas;
 	var cost_per_hour=req.body.cost_per_hour;
 	var Desc=req.body.Desc;
@@ -474,7 +453,6 @@ app.post("/update-Helper", function(req, res) {
   var data = {
 		"firstname": firstname,
 		"lastname": lastname,
-		"email": email,
 		"password":pass,
 		"phonenumber":phonenumber,
 		"address":address,
@@ -483,8 +461,9 @@ app.post("/update-Helper", function(req, res) {
 		"cost_per_hour": cost_per_hour,
 		"Desc" : Desc
 	}
+
   db.collection('users').updateOne(
-    { "email": email}, // Filter
+    { "username": username}, // Filter
     {$set: data}, // Update
     {upsert: true}  // add document with req.body._id if not exists
     ,function(err) {
@@ -494,7 +473,7 @@ app.post("/update-Helper", function(req, res) {
     });
 
 
-});*/
+});
 //////end///
 
 app.listen(3000,function(){

@@ -19,6 +19,7 @@
  min-height: 100px;
 }
 
+
 .u-section-1 .u-table-header-1 {
  font-weight: 700;
  background-image: none;
@@ -41,6 +42,7 @@
    margin-left: 217px;
  }
 }
+
 
 @media (max-width: 575px) {
  .u-section-1 .u-text-1 {
