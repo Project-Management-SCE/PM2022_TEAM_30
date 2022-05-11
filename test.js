@@ -1,5 +1,5 @@
-// console.log("Success");
-const app = require('./app');
+console.log("Success");
+// const app = require('./app');
 
 	
 // describe("Testing", () => {
@@ -9,8 +9,8 @@ const app = require('./app');
 // 	})
 // })
 
-describe('GET /sign_up', function(){
+// describe('GET /sign_up', function(){
  
-      console.log("Success");
-  })
-})
+//       console.log("Success");
+//   })
+// })
