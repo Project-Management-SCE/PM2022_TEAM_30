@@ -1,5 +1,5 @@
-console.log("Success");
-// const app = require('./app');
+// console.log("Success");
+const app = require('./app');
 
 	
 // describe("Testing", () => {
@@ -8,3 +8,13 @@ console.log("Success");
 // 		exepct(response.statusCode).toEqual(200);
 // 	})
 // })
+
+describe('GET /sign_up', function(){
+  it('respond with json', function(done){
+    request(app)
+      .get('/sign_up')
+//       .set('Accept', 'application/json')
+//       .expect('Content-Type', /json/)
+      .expect(200, done);
+  })
+})
