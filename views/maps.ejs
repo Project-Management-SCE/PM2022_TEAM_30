@@ -30,7 +30,15 @@ console.log(locations[0][3]);
     var infowindow = new google.maps.InfoWindow();
 
     var marker, i;
-   
+    for (i = 0; i < locations.length; i++) {
+      marker = new google.maps.Marker({
+       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+       map: map,
+       url: "/helpers"
+      });
+///helperForm
+     
+    }
 
   </script>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
