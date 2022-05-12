@@ -177,7 +177,7 @@ app.get("/helpers", function(req,res){
 	var locationsx = [];
 	var local=[];
 	for(var i=0 ; i<datas.length;i++){
-		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname];
+		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname+" "+datas[i].lastname,datas[i].cost_per_hour,datas[i].Desc,datas[i].Supported_Areas];
 		locationsx.push(local);
 	}
 	console.log(locationsx);
