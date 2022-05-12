@@ -169,13 +169,20 @@ app.get("/Helper",function(req,res){
 
 
 app.get("/helpers", function(req,res){
-	db.collection('users').find({IsHelper:'on'}).toArray().then((data) => {
+	db.collection('users').find({IsHelper:'on'}).toArray().then((datas) => {
 
 
 
-  console.log(data);
+  console.log(datas);
+	var locationsx = [];
+	var local=[];
+	for(var i=0 ; i<datas.length;i++){
+		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname+" "+datas.lastname];
+		locationsx.push(local);
+	}
+	console.log(locationsx);
 
-	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email,dataxs:data} );
+	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email,locationsx:locationsx} );
 
 
 }, err => {
