@@ -514,23 +514,34 @@ app.post("/update-Helper", function(req, res) {
 //////end///
 
 
+app.post('/messages', function(req,res){
 
+	var message = req.body.message;
+	var firstname = req.body.firstname;
+	var lastname = req.body.lastname;
 
+	let ts = Date.now();
 
+	let date_ob = new Date(ts);
+	let date = date_ob.getDate();
+	let month = date_ob.getMonth() + 1;
+	let year = date_ob.getFullYear();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  	var fulldate = year + "-" + month + "-" + date;
+   data = {
+		"message" : message,
+		"firstname": firstname,
+		"lastname": lastname,
+		"fulldate" : fulldate
+		
+	 }
+   db.collection('message').insertOne(data,function(err, collection){
+		 if (err) throw err;
+		 console.log("message inserted Successfully");
+		 console.log(data);
+	 });
+	 return res.redirect('Helper');
+ })
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
