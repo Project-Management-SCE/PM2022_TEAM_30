@@ -4,86 +4,13 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Google Maps Multiple Markers</title>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&callback=initMap&v=weekly"
-          type="text/javascript"></script>
+ 
 </head>
 <body>
   <div id="map" style="width:auto ; height: 500px  "></div>
 
 
 
-  <script type="text/javascript">
-  /*  var locations = [
-    ['שדרות דוד טוביהו 125, באר שבע', 31.250833096354167, 34.77165177394831, 9],
-    ['הנרייטה סאלד 4, באר שבע', 31.247768119945604, 34.80101254511203, 8],
-    ['שדרות ירושלים 10 , באר שבע', 31.24592706949211, 34.780006160457695, 7],
-    ['צומת אלי כהן, באר שבע', 31.244566991211297, 34.792046918130595, 6],
-    ['תוצרת הארץ 1', 31.220042118568568, 34.803669867078405, 5],
-    ['אזור תעשייה קרית יהודית', 31.222567867990843, 34.80155327730949, 4],
-    ['אברהם מאפו 7, באר שבע', 31.236186226232906, 34.77511486045786, 3],
-    ['שדרות אליהו נאוי, באר שבע', 31.249462799150137, 34.817866073948366, 2],
-    ['הנגרים 20, באר שבע', 31.243925383265427, 34.804344216275716, 1]
-  ];*/
-
-  //  var locations = [];
-    const locations= <%- JSON.stringify(locationsx) %>;
-
-console.log(locations[0][3]);
-
-
-
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-     center: new google.maps.LatLng(31.250833096354167, 34.77165177394831),
-     mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-
-    var infowindow = new google.maps.InfoWindow();
-
-    var marker, i;
-    for (i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-       map: map,
-       url: "/helpers"
-      });
-///helperForm
-     google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
-
-       return function() {
-
-
-
-         infowindow.setContent( "<b>"+locations[i][3]+"</b>"+" <br><b>price per hour: </b>"+locations[i][4]+
-        "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
-
-         infowindow.open(map, marker);
-       }
-     })(marker, i));
-
-          google.maps.event.addListener(marker, 'click', (function(marker, i) {
-       return function() {
-         infowindow.setContent(locations[i][0]);
-
-         document.getElementById("titlex").innerHTML="<b>"+locations[i][9]+" detailes</b>";
-         document.getElementById("namex").innerHTML="<b>Name: </b>"+locations[i][3];
-         document.getElementById("emailx").innerHTML="<b>Email: </b>"+locations[i][7];
-         document.getElementById("phonenumberx").innerHTML="<b>Phone number: </b>"+locations[i][8];
-         document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
-         document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
-         document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
-
-         var dest=locations;
-         infowindow.open(map, marker);
-
-        // window.location.href = this.url;
-
-       }
-     })(marker, i));
-    }
-
-  </script>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
     <div class="u-clearfix u-sheet u-sheet-1">
 
