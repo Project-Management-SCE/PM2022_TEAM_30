@@ -41,8 +41,8 @@ const User = mongoose.model('User', {firstname: String ,lastname: String ,userna
 
 const adminJs = new AdminJS ({
 
-//  databases: ['mongoose'], 
-  rootPath: '/admin', 
+//  databases: ['mongoose'],
+  rootPath: '/admin',
 	resources: [User],
 })
 
@@ -57,7 +57,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 
 	authenticate: async (email, password) => {
 		if(email===ADMIN.email && password=== ADMIN.password){
-			
+
 			return ADMIN
 		}
 		return null;
@@ -75,7 +75,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.get('/admin/login', function(req,res){
 
-	redirect('/'); 
+	redirect('/');
 })
 
 
@@ -159,6 +159,9 @@ app.get("/User",function(req,res){
 });
 app.get("/Helper",function(req,res){
 	res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email} );
+});
+app.get("/helpers",function(req,res){
+	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
 });
 app.get("/UpdateHelper",function(req,res){
 	res.render('update-helper',{style:'update-helper.css',
@@ -476,6 +479,25 @@ app.post("/update-Helper", function(req, res) {
 
 });
 //////end///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");

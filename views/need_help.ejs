@@ -46,10 +46,10 @@
           </a>
           </div>
           <div class="u-custom-menu u-nav-container">
-            <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/Admin" style="padding: 10px;">Home</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/Admin#carousel_8e48" data-page-id="1182901518" style="padding: 10px;">Contact</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/UpdateAdmin" style="padding: 10px;">update details</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/users" style="padding: 10px;">users</a>
+            <ul class="u-nav u-spacing-20 u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/User" style="padding: 10px;">Home</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/User#carousel_8e48" data-page-id="1182901518" style="padding: 10px;">Contact</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/UpdateUser"  style="padding: 10px;">update details</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base" href="/helpers" style="padding: 10px;">need help</a>
 
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-grey-90 u-text-hover-palette-2-base"  style="padding: 10px;" href="/">Sign out</a>
 
@@ -75,60 +75,12 @@
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-        <p class="u-align-left u-text u-text-default u-text-grey-30 u-text-2">,Welcome User</p>
+        <p class="u-align-left u-text u-text-default u-text-grey-30 u-text-2">,Welcome <%= firstnamex %> <%= lastnamex %></p>
       </div></header>
     <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <h2 class="u-text u-text-default u-text-1">Users table</h2>
         <div class="u-expanded-width u-table u-table-responsive u-table-1">
-          <table class="u-table-entity u-table-entity-1">
-            <colgroup>
-              <col width="8.8%">
-              <col width="8.8%">
-              <col width="8.8%">
-              <col width="9%">
-              <col width="8.5%">
-              <col width="9%">
-              <col width="9.5%">
-              <col width="10.1%">
-              <col width="9.1%">
-              <col width="9.4%">
-              <col width="9%">
-            </colgroup>
-            <thead class="u-palette-1-light-2 u-table-header u-table-header-1">
-              <tr style="height: 81px;">
-                <th class="u-border-1 u-border-black u-table-cell">first name&nbsp;</th>
-                <th class="u-border-1 u-border-black u-table-cell">last name</th>
-                <th class="u-border-1 u-border-black u-table-cell"> username </th>
-                <th class="u-border-1 u-border-black u-table-cell"> email </th>
-                <th class="u-border-1 u-border-black u-table-cell">phone</th>
-                <th class="u-border-1 u-border-black u-table-cell">address</th>
-                <th class="u-border-1 u-border-black u-table-cell">IsHelper</th>
-                <th class="u-border-1 u-border-black u-table-cell">Supported Areas</th>
-                <th class="u-border-1 u-border-black u-table-cell">cost per hour</th>
-                <th class="u-border-1 u-border-black u-table-cell">Desc</th>
-                <th class="u-border-1 u-border-black u-table-cell"></th>
-              </tr>
-            </thead>
 
-            <tbody class="u-table-body">
-              <tr style="height: 81px;">
-                <td class="u-border-1 u-border-grey-70 u-table-cell"><%= data_res[0].firstname %></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell">Description</td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell">Description</td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell">Description</td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell"></td>
-                <td class="u-border-1 u-border-grey-70 u-table-cell">        
-                  <a href="/Admin" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-6 u-btn-1">Button</a></td>
-              </tr>
-
-            </tbody>
-          </table>
         </div>
       </div
     </section>
