@@ -61,7 +61,7 @@ console.log(locations[0][3]);
          infowindow.open(map, marker);
        }
      })(marker, i));
-/*
+
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
        return function() {
          infowindow.setContent(locations[i][0]);
@@ -78,7 +78,7 @@ console.log(locations[0][3]);
          infowindow.open(map, marker);
 
         // window.location.href = this.url;
-*/
+
        }
      })(marker, i));
     }
