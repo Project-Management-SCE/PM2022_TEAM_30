@@ -99,6 +99,8 @@ app.post('/sign_up', function(req,res){
 	 phonenumber =req.body.phonenumber;
 	 address =req.body.address;
    IsHelper = req.body.IsHelper;
+   latitude=req.body.latitude;
+	longitude=req.body.longitude;
 
   data = {
 		"firstname": firstname,
@@ -111,6 +113,8 @@ app.post('/sign_up', function(req,res){
     "IsHelper":IsHelper
 	}
   if (req.body.IsHelper)  {
+	latitude=req.body.latitude;
+	longitude=req.body.longitude;
     Supported_Areas =req.body.Supported_Areas;
     cost_per_hour =req.body.cost_per_hour;
     Desc =req.body.Desc;
@@ -123,6 +127,8 @@ app.post('/sign_up', function(req,res){
       "phonenumber":phonenumber,
       "address":address,
       "IsHelper":IsHelper,
+	  "latitude":latitude,
+	  "longitude":longitude,
       "Supported_Areas": Supported_Areas,
       "cost_per_hour": cost_per_hour,
       "Desc" : Desc

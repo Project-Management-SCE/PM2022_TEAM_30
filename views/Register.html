@@ -101,22 +101,42 @@
             </div>
             <div class="u-form-address u-form-group u-label-top u-form-group-7">
               <label for="address-b7ee" class="u-label">Address</label>
-              <input type="text" placeholder="Enter your address" id="address-b7ee" name="address" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+              <input id="address" type="text" name="address" placeholder="Enter address here" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required" />
+             
             </div>
-
+            <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&libraries=places"></script>
+ 
+            <script>
+            google.maps.event.addDomListener(window, 'load', initialize);
+            function initialize() {
+            var input = document.getElementById('address');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.addListener('place_changed', function () {
+            var place = autocomplete.getPlace();
+            // place variable will have all the information you are looking for.
+            
+              document.getElementById("latitude").value = place.geometry['location'].lat();
+              document.getElementById("longitude").value = place.geometry['location'].lng();
+            });
+            }
+            </script>
             <script>
               function show(checked){
                 if(checked== false ){
                   $("#forex").fadeOut();
+                  $("#rx").fadeOut();
+                  
                 }
                 else{
                   $("#forex").fadeIn();
+                   $("#rx").fadeOut();
+               
                 }
               }
-
-
+           
+               
+              
             </script>
-
 
 
             <div class="u-form-checkbox u-form-group u-label-top u-form-group-8">
@@ -125,6 +145,15 @@
             </div>
             <div id="forex" style="display: none;"  >
             <div class="u-form-group u-label-top u-form-group-9">
+              <div id="rx">
+               
+                <p>Latitude:
+                    <input type="text" id="latitude"  name= "latitude" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+                </p>
+                <p>Longitude:
+                    <input type="text" id="longitude" name= "longitude" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+                </p>
+            </div>
               <label for="text-f774" class="u-label">Supported Areas</label>
               <input type="text" placeholder="Enter your Supported Areas" id="Supported" name="Supported_Areas" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
             </div>
