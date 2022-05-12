@@ -226,7 +226,7 @@ console.log(check);
 
 			app.get('/logged', function (req, res){
 				var MongoClient = require('mongodb').MongoClient;
-			  var url = "mongodb://localhost:27017/";
+			  var url = "mongodb+srv://admin:admin123@cluster0.omcnp.mongodb.net/EVwaze?retryWrites=true&w=majority";
 				var user_analyzer="";
 				MongoClient.connect(url, function(err, db) {
 			 		 if (err) throw err;
