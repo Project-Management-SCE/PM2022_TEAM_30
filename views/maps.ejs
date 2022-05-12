@@ -42,32 +42,62 @@ console.log(locations[0][3]);
     var infowindow = new google.maps.InfoWindow();
 
     var marker, i;
-
     for (i = 0; i < locations.length; i++) {
       marker = new google.maps.Marker({
        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
        map: map,
-       url: "http://127.0.0.1:3000/UpdateUser"
+       url: "/helpers"
       });
+///helperForm
+    /* google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
 
-     google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
        return function() {
          infowindow.setContent(locations[i][3]);
+
+
+
+         infowindow.setContent( "<b>"+locations[i][3]+"</b>"+" <br><b>price per hour: </b>"+locations[i][4]+
+        "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
+
          infowindow.open(map, marker);
        }
-     })(marker, i));
-
+     })(marker, i));*/
+/*
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
        return function() {
          infowindow.setContent(locations[i][0]);
+
+         document.getElementById("titlex").innerHTML="<b>"+locations[i][9]+" detailes</b>";
+         document.getElementById("namex").innerHTML="<b>Name: </b>"+locations[i][3];
+         document.getElementById("emailx").innerHTML="<b>Email: </b>"+locations[i][7];
+         document.getElementById("phonenumberx").innerHTML="<b>Phone number: </b>"+locations[i][8];
+         document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
+         document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
+         document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
+
+         var dest=locations;
          infowindow.open(map, marker);
-         window.location.href = this.url;
+
+        // window.location.href = this.url;
+*/
        }
      })(marker, i));
     }
 
   </script>
+  <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
+    <div class="u-clearfix u-sheet u-sheet-1">
 
+      <h3 class="u-text u-text-default u-text-1"id="titlex" ><b>helper details</b></h3>
+      <h6 class="u-align-left u-text u-text-2" id="namex">press on a helper tag to load his details</h6>
+      <h6 class="u-align-left u-text u-text-4"id="emailx"></h6>
+      <h6 class="u-align-left u-text u-text-5"id="phonenumberx"></h6>
+      <h6 class="u-align-left u-text u-text-7"id="Supported_Areasx"></h6>
+      <h6 class="u-align-left u-text u-text-8"id="cost_per_hourx"></h6>
+      <h6 class="u-align-left u-text u-text-9"id="Descx"></h6>
+
+    </div>
+  </section>
 
 </body>
 </html>

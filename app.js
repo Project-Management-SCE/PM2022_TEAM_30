@@ -177,7 +177,7 @@ app.get("/helpers", function(req,res){
 	var locationsx = [];
 	var local=[];
 	for(var i=0 ; i<datas.length;i++){
-		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname+" "+datas[i].lastname,datas[i].cost_per_hour,datas[i].Desc,datas[i].Supported_Areas];
+		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname+" "+datas[i].lastname,datas[i].cost_per_hour,datas[i].Desc,datas[i].Supported_Areas,datas[i].email,datas[i].phonenumber,datas[i].firstname];
 		locationsx.push(local);
 	}
 	console.log(locationsx);
@@ -233,7 +233,11 @@ app.get("/users",function(req,res){
 
 	});
 });
+app.get("/helperForm",function(req,res){
+		res.render('helper_form',{style:'helper_form.css'});
 
+
+});
 
 
 
