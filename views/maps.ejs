@@ -12,6 +12,27 @@
 
 
 
+  <script type="text/javascript">
+  
+    const locations= <%- JSON.stringify(locationsx) %>;
+
+console.log(locations[0][3]);
+
+
+
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+     center: new google.maps.LatLng(31.250833096354167, 34.77165177394831),
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+   
+
+  </script>
   <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
     <div class="u-clearfix u-sheet u-sheet-1">
 
