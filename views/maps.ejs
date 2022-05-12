@@ -37,7 +37,38 @@ console.log(locations[0][3]);
        url: "/helpers"
       });
 ///helperForm
-     
+    google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+
+       return function() {
+
+
+
+         infowindow.setContent( "<b>"+locations[i][3]+"</b>"+" <br><b>price per hour: </b>"+locations[i][4]+
+        "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
+
+         infowindow.open(map, marker);
+       }
+     })(marker, i));
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+       return function() {
+         infowindow.setContent(locations[i][0]);
+
+         document.getElementById("titlex").innerHTML="<b>"+locations[i][9]+" detailes</b>";
+         document.getElementById("namex").innerHTML="<b>Name: </b>"+locations[i][3];
+         document.getElementById("emailx").innerHTML="<b>Email: </b>"+locations[i][7];
+         document.getElementById("phonenumberx").innerHTML="<b>Phone number: </b>"+locations[i][8];
+         document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
+         document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
+         document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
+
+         var dest=locations;
+         infowindow.open(map, marker);
+
+        // window.location.href = this.url;
+ 
+       }
+     })(marker, i));
     }
 
   </script>
