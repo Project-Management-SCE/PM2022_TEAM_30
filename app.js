@@ -160,8 +160,23 @@ app.get("/User",function(req,res){
 app.get("/Helper",function(req,res){
 	res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email} );
 });
-app.get("/helpers",function(req,res){
-	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
+
+
+app.get("/helpers", function(req,res){
+	db.collection('users').find({IsHelper:'on'}).toArray().then((data) => {
+
+
+
+  console.log(data);
+
+	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email,dataxs:data} );
+
+
+}, err => {
+  console.log(err);
+});
+
+
 });
 app.get("/UpdateHelper",function(req,res){
 	res.render('update-helper',{style:'update-helper.css',
@@ -205,6 +220,7 @@ app.get("/users",function(req,res){
 
 	});
 });
+
 
 
 
