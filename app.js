@@ -173,11 +173,11 @@ app.get("/helpers", function(req,res){
 
 
 
-  console.log(datas);
+  //console.log(datas);
 	var locationsx = [];
 	var local=[];
 	for(var i=0 ; i<datas.length;i++){
-		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname+" "+datas.lastname];
+		local=[i,datas[i].latitude,datas[i].longitude,datas[i].firstname];
 		locationsx.push(local);
 	}
 	console.log(locationsx);
