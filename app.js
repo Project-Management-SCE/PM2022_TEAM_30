@@ -2,7 +2,7 @@ var express=require("express");
 var bodyParser=require("body-parser");
 const path = require("path");
 const nodemailer = require("nodemailer");
-
+var session = require('express-session')
 const mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost:27017/EVwaze');
 //mongoose.connect('mongodb+srv://admin:admin123@cluster0.omcnp.mongodb.net/EVwaze?retryWrites=true&w=majority')
@@ -14,6 +14,13 @@ db.once('open', function(callback){
 const app = express();
 app.use(express.static('views'));
 
+//session use
+app.use(session({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+
+}))
 ///////////////////////////////////////////////////
 
 var firstname ;
@@ -575,5 +582,4 @@ app.get('/alpha',function(req,res){
 // app.listen(3000,function(){
 //   console.log("server is running at port 3000");
 // });
-
-module.exports = app;
+module.exports=app;
