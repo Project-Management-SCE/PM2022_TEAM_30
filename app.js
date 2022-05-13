@@ -265,7 +265,7 @@ app.get("/helperForm",function(req,res){
 
 
 
-app.post('/mas', function(req,res){
+app.post('/Helper', function(req,res){
 	console.log("message inserted sssssSuccessfully");
 
 	var message = req.body.message;
@@ -564,7 +564,9 @@ app.post("/update-Helper", function(req, res) {
 
 });
 //////end///
-
+app.get('/alpha',function(req,res){
+	res.render('public_massenger',{style:'public_massenger.css'})
+})
 
 
 
