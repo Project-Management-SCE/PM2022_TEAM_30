@@ -1,16 +1,22 @@
-console.log("Success");
-// const app = require('./app');
+var request = require('supertest');
+const assert = require('assert');
+var app = require('./app.js');
 
-	
-// describe("Testing", () => {
-// 	test("Creating user",async()=> {
-// 		const response = await request(app).post("/User").send({style:'Home_user.css',firstnamex : "user1",lastnamex :" aa"});
-// 		exepct(response.statusCode).toEqual(200);
-// 	})
-// })
 
-// describe('GET /sign_up', function(){
- 
-//       console.log("Success");
-//   })
-// })
+describe('Our application', function() {
+
+  // This is the name of the test
+  it('should understand basic mathematical principles', function(done) {
+
+    // We want this test to pass.
+    if (5 == 5) {
+      // If the behavior is as expected, call done with no argument.
+      done();
+    } else {
+      // Otherwise, call done with an error.
+      done(new Error("Not sure what's happened."));
+    }
+
+  });
+
+});
