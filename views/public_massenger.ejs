@@ -3,7 +3,8 @@
 
 
     <link rel="stylesheet" type="text/css" href="public_massenger.css">
-    
+
+
 <div class="container bootstrap snippets bootdeys">
     <div class="col-md-7 col-xs-12 col-md-offset-2">
       <!-- Panel Chat -->
@@ -13,7 +14,11 @@
             <i class="icon wb-chat-text" aria-hidden="true"></i> Chat
           </h3>
         </div>
+<script>
+        const masseges= <%- JSON.stringify(massegesx) %>;
 
+
+</script>
 
         <div class="panel-body">
           <div class="chats">
@@ -36,18 +41,27 @@
                 </div>
               </div>
             </div>
-          
 
-            
+
+
         <div class="panel-footer">
-          <form>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Say something">
-              <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Send</button>
-              </span>
-            </div>
-          </form>
+          <form action="/mas" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
+            <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top">
+                          <label for="name-2280" class="u-label">input</label>
+                          <input type="text" placeholder="Enter your  First name" id="name-2280" name="firstname" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                        </div>
+              <div class="u-align-left u-form-group u-form-submit u-label-top">
+                <input type="submit" value="submit" class="u-form-control-hidden">
+                <script>
+                  function rout(){
+                    alert("you have registered successfully");
+
+                  }
+                </script>
+                <a onclick="rout()" class="u-btn u-btn-submit u-button-style">Submit</a>
+
+              </div>
+            </form>
         </div>
       </div>
       <!-- End Panel Chat -->

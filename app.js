@@ -163,9 +163,33 @@ var data={
 app.get("/User",function(req,res){
 	res.render('Home_user',{style:'Home_user.css',firstnamex : firstname,lastnamex : lastname ,emailx : email} );
 });
+
 app.get("/Helper",function(req,res){
-	res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email} );
+		db.collection('massege').find({IsHelper:'on'}).toArray().then((datam) => {
+
+
+
+			//console.log(datas);
+			  var massegex = [];
+			  var massege=[];
+			  for(var i=0 ; i<datam.length;i++){
+
+				massege=[i,datam[i].message,datam[i].firstname,datam[i].lastname,datam[i].fulldate];
+				  massegex.push(massege);
+			  }
+			  console.log(massegex);
+
+			  res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email,massegesx:massegex} );
+
+
+		  }, err => {
+			console.log(err);
+	});
+
 });
+
+
+
 
 
 app.get("/helpers", function(req,res){
@@ -241,7 +265,35 @@ app.get("/helperForm",function(req,res){
 
 
 
+app.post('/mas', function(req,res){
+	console.log("message inserted sssssSuccessfully");
 
+	var message = req.body.message;
+	var firstname = req.body.firstname;
+	var lastname = req.body.lastname;
+
+	let ts = Date.now();
+
+	let date_ob = new Date(ts);
+	let date = date_ob.getDate();
+	let month = date_ob.getMonth() + 1;
+	let year = date_ob.getFullYear();
+
+  	var fulldate = year + "-" + month + "-" + date;
+   data = {
+		"message" : message,
+		"firstname": firstname,
+		"lastname": lastname,
+		"fulldate" : fulldate
+
+	 }
+   db.collection('message').insertOne(data,function(err, collection){
+		 if (err) throw err;
+		 console.log("message inserted Successfully");
+		 console.log(data);
+	 });
+	 return res.redirect('Helper');
+ })
 ////////////////////////////////////////////////////////////////////////
 //This reponds a post request for the login page
 app.post('/login', function (req, res) {
@@ -514,34 +566,7 @@ app.post("/update-Helper", function(req, res) {
 //////end///
 
 
-app.post('/messages', function(req,res){
 
-	var message = req.body.message;
-	var firstname = req.body.firstname;
-	var lastname = req.body.lastname;
-
-	let ts = Date.now();
-
-	let date_ob = new Date(ts);
-	let date = date_ob.getDate();
-	let month = date_ob.getMonth() + 1;
-	let year = date_ob.getFullYear();
-
-  	var fulldate = year + "-" + month + "-" + date;
-   data = {
-		"message" : message,
-		"firstname": firstname,
-		"lastname": lastname,
-		"fulldate" : fulldate
-		
-	 }
-   db.collection('message').insertOne(data,function(err, collection){
-		 if (err) throw err;
-		 console.log("message inserted Successfully");
-		 console.log(data);
-	 });
-	 return res.redirect('Helper');
- })
 
 app.listen(3000,function(){
   console.log("server is running at port 3000");
