@@ -41,14 +41,14 @@ lkl
 
                         </div>
               <div class="u-align-left u-form-group u-form-submit u-label-top">
-                <input type="submit" value="submit" class="u-form-control-hidden">
+                <input type="submit" value="submit" id="mass" class="u-form-control-hidden">
                 <script>
-                  function rout(){
+                  function rout1(){
                     setTimeout(function(){document.location.href = "/Helper"},500);
 
                   }
                 </script>
-                <a onclick="rout()" class="u-btn u-btn-submit u-button-style">Submit</a>
+                <a onclick="rout1()" class="u-btn u-btn-submit u-button-style">Submit</a>
 
               </div>
             </form>
@@ -67,7 +67,7 @@ lkl
         strwe='<div class="chat">'+
             '<div class="chat-avatar">'+
             '<a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" >'+
-                          +'<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">'
+                          '<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">'
                           +'<i>'+masseg_div[i][2]+'</i>'
                       +'</a>'+
                       '</div>'+'<div class="chat-body">'+
@@ -75,7 +75,7 @@ lkl
                                         '<p>'+
                                           masseg_div[i][1]
 
-                                        +'</p>'+
+                                        +'</p>'
                                         +'<time class="chat-time" >'+masseg_div[i][4]+'</time>'+
                                       '</div>'
                                       +'</div>'
