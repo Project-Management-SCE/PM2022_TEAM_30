@@ -19,35 +19,7 @@
             <i class="icon wb-chat-text" aria-hidden="true"></i> Chat
           </h3>
         </div>
-<script>
-const  masseg_div = <%- JSON.stringify(massegesx) %>;
-console.log(masseg_div[0][3]);
-  var  i;
-  let  strw="";
-  let w="";
-  for (i = 0; i < masseg_div.length; i++) {
-    strw='<div class="chat">'+
-        '<div class="chat-avatar">'+
-        '<a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">'+
-                      +'<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">'
-                      +'<i></i>'
-                  +'</a>
-                  </div> '+'<div class="chat-body">'+
-                  '<div class="chat-content">'+
-                                    '<p>'+
-                                      masseges[i][2]
 
-                                    +'</p>'+
-                                    +'<time class="chat-time" datetime="2015-07-01T11:37">11:37:08 am</time>'+
-                                  '</div>'
-                                  +'</div>'
-                                +'</div>';
-w+=strw;
-  }
-
-
-  document.getElementById("alp").innerHTML=w;
-</script>
 
         <div class="panel-body">
           <div class="chats">
@@ -63,13 +35,16 @@ lkl
           <form action="/Helper" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
             <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top">
                           <label for="name-2280" class="u-label">input</label>
-                          <input type="text" placeholder="Enter your  First name" id="name-2280" name="firstname" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                          <input type="text" placeholder="Enter your  massege:" id="name-2280" name="message" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="">
+                          <input type="hidden" id="first" name="firstname" value="<%= firstnamex%>">
+                          <input type="hidden" id="second" name="lastname" value="<%= lastnamex%>">
+
                         </div>
               <div class="u-align-left u-form-group u-form-submit u-label-top">
                 <input type="submit" value="submit" class="u-form-control-hidden">
                 <script>
                   function rout(){
-                    alert("you have registered successfully");
+                    setTimeout(function(){document.location.href = "/Helper"},500);
 
                   }
                 </script>
@@ -81,6 +56,36 @@ lkl
       <!-- End Panel Chat -->
     </div>
     </div>
+    <script  type="text/javascript">
+    const  masseg_div = <%- JSON.stringify(massegesx) %>;
+    console.log(masseg_div[0][3]);
+      var  i;
+      let  strwe=" ";
+      let wdwe=" ";
+      for (i = 0; i < masseg_div.length; i++) {
 
+        strwe='<div class="chat">'+
+            '<div class="chat-avatar">'+
+            '<a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" >'+
+                          +'<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">'
+                          +'<i>'+masseg_div[i][2]+'</i>'
+                      +'</a>'+
+                      '</div>'+'<div class="chat-body">'+
+                      '<div class="chat-content">'+
+                                        '<p>'+
+                                          masseg_div[i][1]
+
+                                        +'</p>'+
+                                        +'<time class="chat-time" >'+masseg_div[i][4]+'</time>'+
+                                      '</div>'
+                                      +'</div>'
+                                    +'</div>';
+
+    wdwe+=strwe;
+      }
+
+
+      document.getElementById("alp").innerHTML=wdwe;
+    </script>
   </body>
 </html>

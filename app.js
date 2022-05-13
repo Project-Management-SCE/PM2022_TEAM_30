@@ -179,6 +179,8 @@ app.get("/Helper",function(req,res){
 			  }
 			  console.log(massegex);
 
+
+
 			  res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email,massegesx:massegex} );
 
 
