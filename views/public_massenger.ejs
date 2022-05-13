@@ -20,33 +20,45 @@
           </h3>
         </div>
 <script>
+const  masseg_div = <%- JSON.stringify(massegesx) %>;
+console.log(masseg_div[0][3]);
+  var  i;
+  let  strw="";
+  let w="";
+  for (i = 0; i < masseg_div.length; i++) {
+    strw='<div class="chat">'+
+        '<div class="chat-avatar">'+
+        '<a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">'+
+                      +'<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">'
+                      +'<i></i>'
+                  +'</a>
+                  </div> '+'<div class="chat-body">'+
+                  '<div class="chat-content">'+
+                                    '<p>'+
+                                      masseges[i][2]
+
+                                    +'</p>'+
+                                    +'<time class="chat-time" datetime="2015-07-01T11:37">11:37:08 am</time>'+
+                                  '</div>'
+                                  +'</div>'
+                                +'</div>';
+w+=strw;
+  }
 
 
+  document.getElementById("alp").innerHTML=w;
 </script>
 
         <div class="panel-body">
           <div class="chats">
-            <div class="chat">
-              <div class="chat-avatar">
-                <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
-                  <i></i>
-                </a>
-              </div>
+<div id="alp">
+
+lkl
 
 
-              <div class="chat-body">
-                <div class="chat-content">
-                  <p>
-                    Good morning, sir.
-                    <br>What can I do for you?
-                  </p>
-                  <time class="chat-time" datetime="2015-07-01T11:37">11:37:08 am</time>
-                </div>
-              </div>
-            </div>
 
 
+  </div>
 
           <form action="/Helper" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
             <div class="u-form-group u-form-name u-form-partition-factor-2 u-label-top">

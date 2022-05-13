@@ -165,7 +165,7 @@ app.get("/User",function(req,res){
 });
 
 app.get("/Helper",function(req,res){
-		db.collection('massege').find({IsHelper:'on'}).toArray().then((datam) => {
+		db.collection('message').find({}).toArray().then((datam) => {
 
 
 
