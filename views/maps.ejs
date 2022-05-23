@@ -167,13 +167,10 @@ function postToController() {
   <p>
     <input type="hidden" id="rating" name= "rating" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
   </p>
-  <script>
-    function rout(){
-      alert("your rate had been sent successfully");
-    }
-  </script>
+ 
   <div class="u-align-left u-form-group u-form-submit u-label-top">
-    
+    <input type="submit" value="submit" class="u-form-control-hidden">
+    <a onclick="routw()" class="u-btn u-btn-submit u-button-style">Send Your Rating</a>
     </div>
   </div>
 </form>
