@@ -18,7 +18,7 @@
 
 
   <script type="text/javascript">
-  
+
     const locations= <%- JSON.stringify(locationsx) %>;
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -50,6 +50,7 @@
        }
      })(marker, i));
 
+
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
        return function() {
          infowindow.setContent(locations[i][0]);
@@ -62,17 +63,20 @@
          document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
          document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
         document.getElementById("rated").value = locations[i][7];
-        
+document.getElementById("les").style.visibility = "visible";
 
          var dest=locations;
          infowindow.open(map, marker);
 
         // window.location.href = this.url;
- 
+
        }
      })(marker, i));
+     document.getElementById("les").style.display = "none";
+     //$("#les").fadeOut();
+
     }
-    
+
   </script>
   <section class=" u-inner-form" id="sec-305b">
     <div class="u-clearfix u-sheet u-sheet-1">
@@ -86,7 +90,10 @@
       <h6 class="u-align-left u-text u-text-9"id="Descx"></h6>
 
     </div>
-    
+
+<div id="les" >
+
+
 <form  class="rating" method="POST">
             <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" />&nbsp<label  for="star5" title="Super !!">
             <span class="fa fa-star checked"></span>
@@ -137,14 +144,15 @@ function postToController() {
                     break;
                 }
         }
-        alert(ratingValue);
-        
-        
+        //alert(ratingValue);
+
+
         document.getElementById("rating").value = ratingValue;
 }
 </script>
 
 </form>
+
 <div class="u-form u-form-1">
 <form action="/rating" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
   <p>
@@ -163,6 +171,11 @@ function postToController() {
   </div>
 </form>
 
+</div>
+<script>
+document.getElementById("les").style.visibility = "hidden";
+
+</script>
   </section>
 
 </body>
