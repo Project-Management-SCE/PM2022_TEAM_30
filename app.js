@@ -575,7 +575,7 @@ app.post("/update-Helper", function(req, res) {
 });
 //////end///
 app.post('/rating', function(req,res){
-
+	console.log("bye");
 	 var rater = req.body.rater;
 	 var rated = req.body.rated;
 	 var rating = req.body.rating;

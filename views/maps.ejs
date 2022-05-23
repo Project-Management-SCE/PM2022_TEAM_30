@@ -21,11 +21,6 @@
   
     const locations= <%- JSON.stringify(locationsx) %>;
 
-console.log(locations[0][3]);
-
-
-
-
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
      center: new google.maps.LatLng(31.250833096354167, 34.77165177394831),
@@ -66,6 +61,8 @@ console.log(locations[0][3]);
          document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
          document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
          document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
+        document.getElementById("rated").value = locations[i][7];
+        
 
          var dest=locations;
          infowindow.open(map, marker);
@@ -75,9 +72,9 @@ console.log(locations[0][3]);
        }
      })(marker, i));
     }
-
+    
   </script>
-  <section class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" id="sec-305b">
+  <section class=" u-inner-form" id="sec-305b">
     <div class="u-clearfix u-sheet u-sheet-1">
 
       <h3 class="u-text u-text-default u-text-1"id="titlex" ><b>helper details</b></h3>
@@ -90,36 +87,40 @@ console.log(locations[0][3]);
 
     </div>
     
-<form action="/rating" class="rating" method="post">
-            <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" /><label  for="star5" title="Super !!">
+<form  class="rating" method="POST">
+            <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" />&nbsp<label  for="star5" title="Super !!">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-          </label>
-            <input type="radio" id="star4" name="rating" value="4" onclick="postToController();" /><label for="star4" title="Geil">
+          | </label>
+          &nbsp
+            <input type="radio" id="star4" name="rating" value="4" onclick="postToController();" />&nbsp<label for="star4" title="Geil">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
-          </label>
-            <input type="radio" id="star3" name="rating" value="3" onclick="postToController();" /><label for="star3" title="Gut">
+          | </label>
+          &nbsp
+            <input type="radio" id="star3" name="rating" value="3" onclick="postToController();" />&nbsp<label for="star3" title="Gut">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
-            </label>
-            <input type="radio" id="star2" name="rating" value="2" onclick="postToController();" /><label for="star2" title="So gut wie">
+            | </label>
+            &nbsp
+            <input type="radio" id="star2" name="rating" value="2" onclick="postToController();" />&nbsp<label for="star2" title="So gut wie">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
-            </label>
-            <input type="radio" id="star1" name="rating" value="1" onclick="postToController();" /><label for="star1" title="Schlecht">
+            | </label>
+            &nbsp
+            <input type="radio" id="star1" name="rating" value="1" onclick="postToController();" />&nbsp<label for="star1" title="Schlecht">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star "></span>
@@ -137,25 +138,31 @@ function postToController() {
                 }
         }
         alert(ratingValue);
-        document.getElementById("rater").value =  firstnamex ;
-        document.getElementById("rated").value = locations[i][7];
+        
+        
         document.getElementById("rating").value = ratingValue;
 }
-
 </script>
 
-<div id="rx" fadeOut()>   
-  <p>rater:
-      <input type="text" id="rater"  name= "rater" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
-  </p>
-  <p>rated:
-      <input type="text" id="rated" name= "rated" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
-  </p>
-  <p>rating:
-    <input type="text" id="rating" name= "rating" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
-  </p>
-</div>
 </form>
+<div class="u-form u-form-1">
+<form action="/rating" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="custom" name="form" style="padding: 20px;">
+  <p>
+      <input type="hidden"   id="rater" value="<%= emailx%>" name= "rater" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+  <p>
+      <input type="hidden" id="rated" name= "rated" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+  <p>
+    <input type="hidden" id="rating" name= "rating" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+  <div class="u-align-left u-form-group u-form-submit u-label-top">
+    <input type="submit" value="submit" class="u-form-control-hidden">
+    <a  class="u-btn u-btn-submit u-button-style">Send Your Rating</a>
+    </div>
+  </div>
+</form>
+
   </section>
 
 </body>
