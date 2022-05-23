@@ -62,6 +62,8 @@
          document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
          document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
          document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
+         document.getElementById("rates").innerHTML="<b>rate: </b>"+locations[i][10];
+
         document.getElementById("rated").value = locations[i][7];
 document.getElementById("les").style.visibility = "visible";
 
@@ -72,8 +74,7 @@ document.getElementById("les").style.visibility = "visible";
 
        }
      })(marker, i));
-     document.getElementById("les").style.display = "none";
-     //$("#les").fadeOut();
+
 
     }
 
@@ -88,7 +89,7 @@ document.getElementById("les").style.visibility = "visible";
       <h6 class="u-align-left u-text u-text-7"id="Supported_Areasx"></h6>
       <h6 class="u-align-left u-text u-text-8"id="cost_per_hourx"></h6>
       <h6 class="u-align-left u-text u-text-9"id="Descx"></h6>
-
+      <h6 class="u-align-left u-text u-text-9"id="rates"></h6>
     </div>
 
 <div id="les" >
