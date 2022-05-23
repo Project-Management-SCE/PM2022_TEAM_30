@@ -574,6 +574,26 @@ app.post("/update-Helper", function(req, res) {
 
 });
 //////end///
+app.post('/rating', function(req,res){
+
+	 var rater = req.body.rater;
+	 var rated = req.body.rated;
+	 var rating = req.body.rating;
+ 
+   data = {
+		 "rater": rater,
+		 "rated": rated,
+	 "rating" : rating
+		
+	 }
+   db.collection('rating').insertOne(data,function(err, collection){
+		 if (err) throw err;
+		 console.log("rating inserted Successfully");
+	 });
+	 return res.redirect('signup_success.html');
+ })
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 app.get('/alpha',function(req,res){
 	res.render('public_massenger',{style:'public_massenger.css'})
 })

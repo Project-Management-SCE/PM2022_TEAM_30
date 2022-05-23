@@ -77,7 +77,7 @@ console.log(locations[0][3]);
     }
 
   </script>
-  <section class="u-align-center u-clearfix u-grey-10 u-section-1" id="sec-305b">
+  <section class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" id="sec-305b">
     <div class="u-clearfix u-sheet u-sheet-1">
 
       <h3 class="u-text u-text-default u-text-1"id="titlex" ><b>helper details</b></h3>
@@ -90,38 +90,43 @@ console.log(locations[0][3]);
 
     </div>
     
-<form class="rating" method="post">
-            <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" /><label  for="star5" title="Super !!"></label>   
+<form action="/rating" class="rating" method="post">
+            <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" /><label  for="star5" title="Super !!">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <input type="radio" id="star4" name="rating" value="4" onclick="postToController();" /><label for="star4" title="Geil"></label>
+          </label>
+            <input type="radio" id="star4" name="rating" value="4" onclick="postToController();" /><label for="star4" title="Geil">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star"></span>
-            <input type="radio" id="star3" name="rating" value="3" onclick="postToController();" /><label for="star3" title="Gut"></label>
+          </label>
+            <input type="radio" id="star3" name="rating" value="3" onclick="postToController();" /><label for="star3" title="Gut">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
-            <input type="radio" id="star2" name="rating" value="2" onclick="postToController();" /><label for="star2" title="So gut wie"></label>
+            </label>
+            <input type="radio" id="star2" name="rating" value="2" onclick="postToController();" /><label for="star2" title="So gut wie">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
-            <input type="radio" id="star1" name="rating" value="1" onclick="postToController();" /><label for="star1" title="Schlecht"></label>
+            </label>
+            <input type="radio" id="star1" name="rating" value="1" onclick="postToController();" /><label for="star1" title="Schlecht">
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
-</form>
+          </label>
+
 
 <script>
 function postToController() {
@@ -132,8 +137,25 @@ function postToController() {
                 }
         }
         alert(ratingValue);
+        document.getElementById("rater").value =  firstnamex ;
+        document.getElementById("rated").value = locations[i][7];
+        document.getElementById("rating").value = ratingValue;
 }
+
 </script>
+
+<div id="rx" fadeOut()>   
+  <p>rater:
+      <input type="text" id="rater"  name= "rater" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+  <p>rated:
+      <input type="text" id="rated" name= "rated" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+  <p>rating:
+    <input type="text" id="rating" name= "rating" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
+  </p>
+</div>
+</form>
   </section>
 
 </body>
