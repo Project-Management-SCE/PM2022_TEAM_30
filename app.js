@@ -242,7 +242,7 @@ app.get("/helpers", function(req,res){
 
 				}
 				avg=sum/size;
-per_rate=[ratings[i].rated,avg];
+per_rate=[ratings[i].rated,avg.toFixed(1)];
 fullratings.push(per_rate);
 
 

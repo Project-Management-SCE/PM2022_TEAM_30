@@ -43,7 +43,7 @@
 
 
 
-         infowindow.setContent( "<b>"+locations[i][3]+"</b>"+" <br><b>price per hour: </b>"+locations[i][4]+
+         infowindow.setContent( "<b>"+locations[i][3]+"</b>"+"<b>&nbsp;&nbsp;"+locations[i][10]+"/5"+"</b>"+"<br><b>price per hour: </b>"+locations[i][4]+
         "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
 
          infowindow.open(map, marker);
@@ -62,7 +62,7 @@
          document.getElementById("Supported_Areasx").innerHTML="<b>Supported areas: </b>"+locations[i][6];
          document.getElementById("cost_per_hourx").innerHTML="<b>Cost per hour: </b>"+locations[i][4];
          document.getElementById("Descx").innerHTML="<b>Description: </b>"+locations[i][5];
-         document.getElementById("rates").innerHTML="<b>rate: </b>"+locations[i][10];
+         document.getElementById("rates").innerHTML="<b>rate: </b>"+locations[i][10]+"/5";
 
         document.getElementById("rated").value = locations[i][7];
 document.getElementById("les").style.visibility = "visible";
@@ -150,6 +150,7 @@ function postToController() {
 
         document.getElementById("rating").value = ratingValue;
 }
+
 </script>
 
 </form>
@@ -166,8 +167,8 @@ function postToController() {
     <input type="hidden" id="rating" name= "rating" readonly class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" required="required"/>
   </p>
   <div class="u-align-left u-form-group u-form-submit u-label-top">
-    <input type="submit" value="submit" class="u-form-control-hidden">
-    <a  class="u-btn u-btn-submit u-button-style">Send Your Rating</a>
+    <input onclick="routw" type="submit" value="submit" class="u-form-control-hidden">
+    <a  onclick="routw()" class="u-btn u-btn-submit u-button-style">Send Your Rating</a>
     </div>
   </div>
 </form>
@@ -175,7 +176,11 @@ function postToController() {
 </div>
 <script>
 document.getElementById("les").style.visibility = "hidden";
+function routw(){
+  alert("your rate had been sent successfully");
+  setTimeout(function(){document.location.href = "/helpers"},500);
 
+}
 </script>
   </section>
 
