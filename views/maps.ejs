@@ -3,7 +3,12 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Google Maps Multiple Markers</title>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .checked {
+      color: orange;
+    }
+    </style>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCppNg9iyb-GOjswlztdOgTlHee1SuvmdM&callback=initMap&v=weekly"
           type="text/javascript"></script>
 </head>
@@ -84,6 +89,51 @@ console.log(locations[0][3]);
       <h6 class="u-align-left u-text u-text-9"id="Descx"></h6>
 
     </div>
+    
+<form class="rating" method="post">
+            <input type="radio" id="star5" name="rating" value="5" onclick="postToController();" /><label  for="star5" title="Super !!"></label>   
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <input type="radio" id="star4" name="rating" value="4" onclick="postToController();" /><label for="star4" title="Geil"></label>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <input type="radio" id="star3" name="rating" value="3" onclick="postToController();" /><label for="star3" title="Gut"></label>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star"></span>
+            <input type="radio" id="star2" name="rating" value="2" onclick="postToController();" /><label for="star2" title="So gut wie"></label>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star"></span>
+            <input type="radio" id="star1" name="rating" value="1" onclick="postToController();" /><label for="star1" title="Schlecht"></label>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star "></span>
+            <span class="fa fa-star"></span>
+</form>
+
+<script>
+function postToController() {
+        for (i = 0; i < document.getElementsByName('rating').length; i++) {
+                if(document.getElementsByName('rating')[i].checked == true) {
+                    var ratingValue = document.getElementsByName('rating')[i].value;
+                    break;
+                }
+        }
+        alert(ratingValue);
+}
+</script>
   </section>
 
 </body>
