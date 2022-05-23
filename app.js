@@ -204,6 +204,14 @@ app.get("/Helper",function(req,res){
 
 app.get("/helpers", function(req,res){
 	db.collection('users').find({IsHelper:'on'}).toArray().then((datas) => {
+/*		const pipeline = [
+    { $match: { categories: "rated" } },
+    { $group: { _id: "$rated", avg_val:{$avg:"$rating.value"} } }
+];
+	const avg=	db.collection('rating').aggregate(pipeline);
+
+    console.log(avg);*/
+
 
 
 
@@ -216,7 +224,45 @@ app.get("/helpers", function(req,res){
 	}
 	console.log(locationsx);
 
-	res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email,locationsx:locationsx} );
+	db.collection('rating').find().toArray().then((ratings) => {
+	//	console.log(ratings[1].rating);
+		var fullratings = [];
+		var per_rate=[];
+		for(var i=0 ; i<ratings.length;i++){
+			var sum =0;
+			var size=0;
+			var avg=0;
+				for(var j=0 ; j<ratings.length;j++){
+					if(ratings[i].rated==ratings[j].rated){
+						sum+=Number(ratings[j].rating);
+						size+=1;
+				//		console.log(sum ,ratings[j].rated);
+
+					}
+
+				}
+				avg=sum/size;
+per_rate=[ratings[i].rated,avg.toFixed(1)];
+fullratings.push(per_rate);
+
+
+	}
+
+//console.log(fullratings);
+
+
+for(var d=0; d<locationsx.length;d++){
+	for(var z=0; z<fullratings.length;z++){
+		if(locationsx[d][7]==fullratings[z][0]){
+			locationsx[d][10]=fullratings[z][1];
+		}
+	}
+
+}
+
+res.render('need_help',{style:'need_help.css',firstnamex : firstname,lastnamex : lastname ,emailx : email,locationsx:locationsx} );
+
+	})
 
 
 }, err => {
@@ -579,12 +625,12 @@ app.post('/rating', function(req,res){
 	 var rater = req.body.rater;
 	 var rated = req.body.rated;
 	 var rating = req.body.rating;
- 
+
    data = {
 		 "rater": rater,
 		 "rated": rated,
 	 "rating" : rating
-		
+
 	 }
    db.collection('rating').insertOne(data,function(err, collection){
 		 if (err) throw err;
