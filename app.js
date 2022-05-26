@@ -353,20 +353,30 @@ app.get("/helperForm",function(req,res){
 
 
 app.post('/Helper', function(req,res){
-	console.log("message inserted sssssSuccessfully");
 
 	var message = req.body.message;
 	var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
 
-	let ts = Date.now();
+	/*let ts = Date.now();
 
 	let date_ob = new Date(ts);
+
 	let date = date_ob.getDate();
 	let month = date_ob.getMonth() + 1;
-	let year = date_ob.getFullYear();
+	let year = date_ob.getFullYear();*/
+	let date_time = new Date();
 
-  	var fulldate = year + "-" + month + "-" + date;
+// get current date
+// adjust 0 before single digit date
+let date = ("0" + date_time.getDate()).slice(-2);
+let month = ("0" + (date_time.getMonth() + 1)).slice(-2);
+let year = date_time.getFullYear();
+let hours = date_time.getHours();
+let minutes = date_time.getMinutes();
+let seconds = date_time.getSeconds();
+
+  	var fulldate = hours + ":" + minutes + ":" + seconds + "\n" + date + "-" + month + "-" + year ;
    data = {
 		"message" : message,
 		"firstname": firstname,
