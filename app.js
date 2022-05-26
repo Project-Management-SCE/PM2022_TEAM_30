@@ -85,7 +85,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.get('/admin/login', function(req,res){
 
-	redirect('/');
+	redirect('https://ev-waze.herokuapp.com/');
 })
 
 
