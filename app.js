@@ -44,13 +44,14 @@ AdminJS.registerAdapter(AdminJSMongoose)
 
 const User = mongoose.model('User', {firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
  phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
-
+ const Message = mongoose.model('message', {message: String,firstname:String,lastname:String,fulldate:String, })
+ const Rating = mongoose.model('Rating', {rater: String,rated:String,rating:String, })
 
 const adminJs = new AdminJS ({
 
-//  databases: ['mongoose'],
+//databases: [],
   rootPath: '/admin',
-	resources: [User],
+	resources: [User,Message,Rating],
 })
 
 const ADMIN={
@@ -172,7 +173,7 @@ app.get("/User",function(req,res){
 });
 
 app.get("/Helper",function(req,res){
-		db.collection('message').find({}).toArray().then((datam) => {
+		db.collection('messages').find({}).toArray().then((datam) => {
 
 
 
@@ -187,7 +188,7 @@ app.get("/Helper",function(req,res){
 			  console.log(massegex);
 
 //////////////////////
-db.collection('rating').find({rated:email}).toArray().then((ratem) => {
+db.collection('ratings').find({rated:email}).toArray().then((ratem) => {
 	var ratex = [];
 	var per_rate=[];
 	for(var j=0 ; j<ratem.length;j++){
@@ -255,7 +256,7 @@ app.get("/helpers", function(req,res){
 	}
 	console.log(locationsx);
 
-	db.collection('rating').find().toArray().then((ratings) => {
+	db.collection('ratings').find().toArray().then((ratings) => {
 	//	console.log(ratings[1].rating);
 		var fullratings = [];
 		var per_rate=[];
@@ -384,7 +385,7 @@ let seconds = date_time.getSeconds();
 		"fulldate" : fulldate
 
 	 }
-   db.collection('message').insertOne(data,function(err, collection){
+   db.collection('messages').insertOne(data,function(err, collection){
 		 if (err) throw err;
 		 console.log("message inserted Successfully");
 		 console.log(data);
@@ -673,7 +674,7 @@ app.post('/rating', function(req,res){
 	 "rating" : rating
 
 	 }
-   db.collection('rating').insertOne(data,function(err, collection){
+   db.collection('ratings').insertOne(data,function(err, collection){
 		 if (err) throw err;
 		 console.log("rating inserted Successfully");
 	 });
