@@ -12,6 +12,7 @@ db.once('open', function(callback){
 	console.log("connection succeeded");
 })
 const app = express();
+
 app.use(express.static('views'));
 
 //session use
@@ -38,19 +39,20 @@ var Desc;
 
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
-const AdminJSMongoose = require('@adminjs/mongoose')
+const AdminJSMongoose = require('@adminjs/mongoose');
+const { stringify } = require("querystring");
 AdminJS.registerAdapter(AdminJSMongoose)
 
 
 const User = mongoose.model('User', {firstname: String ,lastname: String ,username: String , email: String, phonenumber: String, address: String,
  phonenumber: String ,Supported_Areas: String, cost_per_hour: String, Desc: String,})
-
+const Message = mongoose.model('Message', {message: String ,firstname: String ,lastname: String , fulldate: String, })
 
 const adminJs = new AdminJS ({
 
 //  databases: ['mongoose'],
   rootPath: '/admin',
-	resources: [User],
+	resources: [User,Message],
 })
 
 const ADMIN={
