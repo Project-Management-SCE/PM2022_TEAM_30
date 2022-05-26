@@ -12,6 +12,7 @@ db.once('open', function(callback){
 	console.log("connection succeeded");
 })
 const app = express();
+
 app.use(express.static('views'));
 
 //session use
@@ -38,7 +39,8 @@ var Desc;
 
 const AdminJS = require('adminjs')
 const AdminJSExpress = require('@adminjs/express')
-const AdminJSMongoose = require('@adminjs/mongoose')
+const AdminJSMongoose = require('@adminjs/mongoose');
+const { stringify } = require("querystring");
 AdminJS.registerAdapter(AdminJSMongoose)
 
 
@@ -91,9 +93,9 @@ app.get('/admin/login', function(req,res){
 
 app.set("view engine", "ejs");
 
-app.get('/', function (req, res) {
+app.get('https://ev-waze.herokuapp.com/', function (req, res) {
 
-  res.render('Home',{style:'Home.css'} );
+  res.render('index',{style:'Home.css'} );
 });
 
 //////////////////////////////////////////////sign up as a user///////////////////////////////////////////////////
