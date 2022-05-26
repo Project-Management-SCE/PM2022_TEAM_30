@@ -13,7 +13,7 @@
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.8.2, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -83,14 +83,94 @@
 
     </section>
 
-    <section class="u-border-1 u-border-grey-15 u-clearfix u-grey-15 u-section-3" id="sec-685d">
-      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
 
+    <style>
+      .checked {
+        color: orange;
+font-size:36px;
+      }
 
-
-
+      </style>
+    <section class="u-border-1 u-border-grey-15 u-clearfix u-grey-15 u-section-3" style="overflow: scroll; height:500px" id="sec-685d">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1" id="alpha_rate">
+<h1>There are no ratings yet!</h1>
       </div>
     </section>
+
+
+
+<script type="text/javascript">
+
+const full_rates= <%- JSON.stringify(ratex) %>;
+let  glopal_rate=" ";
+let per_rate=" ";
+glopal_rate+='<h1>the general rate: &nbsp &nbsp'+<%= avgx %>+'/5</h1>';
+for (var i = 0; i < full_rates.length; i++) {
+
+  if(full_rates[i][3]==1){
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+  '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5 </h3>'+
+  '</label>';
+  }
+  else if (full_rates[i][3]==2) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+  }
+  else if (full_rates[i][3]==3) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+  else if (full_rates[i][3]==4) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+  else if (full_rates[i][3]==5) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+
+    glopal_rate+=per_rate;
+}
+document.getElementById("alpha_rate").innerHTML=glopal_rate;
+
+
+
+
+</script>
+
+
+
+
+
     <section class="u-align-center u-clearfix u-image u-section-4" id="carousel_8e48" data-image-width="1496" data-image-height="764">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-text u-text-1">Contact Us</h2>
@@ -140,16 +220,6 @@ c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path></svg></span>
           </a>
         </div>
       </div></footer>
-    <section class="u-backlink u-clearfix u-grey-80">
-      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
-        <span>Website Templates</span>
-      </a>
-      <p class="u-text">
-        <span>created with</span>
-      </p>
-      <a class="u-link" href="" target="_blank">
-        <span>Website Builder Software</span>
-      </a>.
-    </section>
+
   </body>
 </html>

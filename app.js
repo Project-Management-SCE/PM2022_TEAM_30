@@ -186,9 +186,40 @@ app.get("/Helper",function(req,res){
 			  }
 			  console.log(massegex);
 
+//////////////////////
+db.collection('rating').find({rated:email}).toArray().then((ratem) => {
+	var ratex = [];
+	var per_rate=[];
+	for(var j=0 ; j<ratem.length;j++){
+		per_rate=[j,ratem[j].rated,ratem[j].rater,ratem[j].rating];
+		ratex.push(per_rate);
+}
+console.log("/////////////////////////////////////");
+
+console.log(ratex);
+var sum =0;
+var size=0;
+var avg=0
+for(var i=0 ; i<ratem.length;i++){
+sum+=Number(ratem[i].rating);
+size+=1;
+}
+	avg=sum/size;
+avgx=avg.toFixed(1);
+
+console.log(avgx);
+res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email,massegesx:massegex,ratex:ratex,avgx:avgx} );
 
 
-			  res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnamex : lastname,emailx : email,massegesx:massegex} );
+})
+//////////////////////
+
+
+
+
+
+
+
 
 
 		  }, err => {
