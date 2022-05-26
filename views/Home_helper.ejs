@@ -105,10 +105,12 @@ const full_rates= <%- JSON.stringify(ratex) %>;
 let  glopal_rate=" ";
 let per_rate=" ";
 glopal_rate+='<h1>the general rate: &nbsp &nbsp'+<%= avgx %>+'/5</h1>';
-for (var i = 0; i < full_rates.length; i++) {
 
+for (var i = 0; i < full_rates.length; i++) {
   if(full_rates[i][3]==1){
-    per_rate+='<h3>'+'&nbsp'+
+    console.log(1);
+
+    glopal_rate+='<h3>'+'&nbsp'+
     '<span class="fa fa-star checked "></span>'+
     '<span class="fa fa-star "></span>'+
     '<span class="fa fa-star "></span>'+
@@ -118,7 +120,9 @@ for (var i = 0; i < full_rates.length; i++) {
   '</label>';
   }
   else if (full_rates[i][3]==2) {
-    per_rate+='<h3>'+'&nbsp'+
+    console.log(2);
+
+    glopal_rate+='<h3>'+'&nbsp'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star "></span>'+
@@ -128,7 +132,9 @@ for (var i = 0; i < full_rates.length; i++) {
   '</label>';
   }
   else if (full_rates[i][3]==3) {
-    per_rate+='<h3>'+'&nbsp'+
+    console.log(3);
+
+    glopal_rate+='<h3>'+'&nbsp'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
@@ -138,7 +144,9 @@ for (var i = 0; i < full_rates.length; i++) {
   '</label>';
     }
   else if (full_rates[i][3]==4) {
-    per_rate+='<h3>'+'&nbsp'+
+    console.log(4);
+
+    glopal_rate+='<h3>'+'&nbsp'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
@@ -148,7 +156,9 @@ for (var i = 0; i < full_rates.length; i++) {
   '</label>';
     }
   else if (full_rates[i][3]==5) {
-    per_rate+='<h3>'+'&nbsp'+
+    console.log(5);
+
+    glopal_rate+='<h3>'+'&nbsp'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
     '<span class="fa fa-star checked"></span>'+
@@ -158,7 +168,7 @@ for (var i = 0; i < full_rates.length; i++) {
   '</label>';
     }
 
-    glopal_rate+=per_rate;
+    //glopal_rate+=per_rate;
 }
 document.getElementById("alpha_rate").innerHTML=glopal_rate;
 
