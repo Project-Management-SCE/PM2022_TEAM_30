@@ -93,7 +93,7 @@ app.get('/admin/login', function(req,res){
 
 app.set("view engine", "ejs");
 
-app.get('/', function (req, res) {
+app.get('https://ev-waze.herokuapp.com/', function (req, res) {
 
   res.render('index',{style:'Home.css'} );
 });
