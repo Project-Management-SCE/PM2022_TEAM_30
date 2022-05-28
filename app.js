@@ -221,22 +221,11 @@ res.render('Home_helper',{style:'Home_helper.css',firstnamex : firstname,lastnam
 })
 //////////////////////
 
-
-
-
-
-
-
-
-
 		  }, err => {
 			console.log(err);
 	});
 
 });
-
-
-
 
 
 
