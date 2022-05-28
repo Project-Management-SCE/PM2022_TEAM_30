@@ -38,11 +38,10 @@
       });
 ///helperForm
     google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+      
        return function() {
-
          infowindow.setContent( "<b>"+locations[i][3]+"</b>"+"<b>&nbsp;&nbsp;"+locations[i][10]+"/5"+"</b>"+"<br><b>price per hour: </b>"+locations[i][4]+
         "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
-
          infowindow.open(map, marker);
        }
      })(marker, i));
