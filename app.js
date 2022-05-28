@@ -264,7 +264,7 @@ app.get("/helpers", function(req,res){
 						sum+=Number(ratings[j].rating);
 						size+=1;
 				//		console.log(sum ,ratings[j].rated);
-
+  
 					}
 
 				}
