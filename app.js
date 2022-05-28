@@ -72,7 +72,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 		}
 		return null;
 	}
-}) 
+})
 
 app.use(adminJs.options.rootPath, router)
 
@@ -179,6 +179,8 @@ app.get("/Helper",function(req,res){
 
 
 
+
+
 			//console.log(datas);
 			  var massegex = [];
 			  var massege=[];
@@ -188,6 +190,7 @@ app.get("/Helper",function(req,res){
 				  massegex.push(massege);
 			  }
 			  console.log(massegex);
+
 
 //////////////////////
 db.collection('ratings').find({rated:email}).toArray().then((ratem) => {
