@@ -192,6 +192,7 @@ app.get("/Helper",function(req,res){
 			  console.log(massegex);
 
 
+
 //////////////////////
 db.collection('ratings').find({rated:email}).toArray().then((ratem) => {
 	var ratex = [];
