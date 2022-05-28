@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm install'
+                sh 'chmod 777 ${env.WORKSPACE}'
+                sh 'npm test'
             }
         }
         stage('Deliver') {
