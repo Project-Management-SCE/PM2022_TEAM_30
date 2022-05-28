@@ -147,7 +147,17 @@ for (var i = 0; i < full_rates.length; i++) {
     '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
   '</label>';
     }
-  
+  else if (full_rates[i][3]==5) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+
     glopal_rate+=per_rate;
 }
 document.getElementById("alpha_rate").innerHTML=glopal_rate;
