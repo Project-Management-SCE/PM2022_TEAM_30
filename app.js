@@ -591,8 +591,6 @@ app.post("/rest", function(req, res) {
 app.post("/update-user", function(req, res) {
   var firstname = req.body.firstname;
 	var lastname = req.body.lastname;
-  var username = req.body.username;
-	var email =req.body.email;
 	var pass = req.body.password;
 	var phonenumber =req.body.phonenumber;
 	var address =req.body.address;
@@ -608,13 +606,14 @@ app.post("/update-user", function(req, res) {
     "IsHelper":IsHelper
 	}
   db.collection('users').updateOne(
-    { "username": username}, // Filter
+    { "email": email}, // Filter
     {$set: data}, // Update
     {upsert: true}  // add document with req.body._id if not exists
     ,function(err) {
       if (err) throw err;
       else{
-      console.log("The details has updated");}
+      console.log("The details has updated");
+	  console.log(username);}
     });
 
 
