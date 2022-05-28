@@ -179,8 +179,6 @@ app.get("/Helper",function(req,res){
 
 
 
-
-
 			//console.log(datas);
 			  var massegex = [];
 			  var massege=[];
@@ -264,7 +262,6 @@ app.get("/helpers", function(req,res){
 						sum+=Number(ratings[j].rating);
 						size+=1;
 				//		console.log(sum ,ratings[j].rated);
-  
 					}
 
 				}
@@ -276,7 +273,6 @@ fullratings.push(per_rate);
 	}
 
 //console.log(fullratings);
-
 
 for(var d=0; d<locationsx.length;d++){
 	for(var z=0; z<fullratings.length;z++){
