@@ -44,7 +44,7 @@
          infowindow.setContent( "<b>"+locations[i][3]+"</b>"+"<b>&nbsp;&nbsp;"+locations[i][10]+"/5"+"</b>"+"<br><b>price per hour: </b>"+locations[i][4]+
         "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
          infowindow.open(map, marker);
-       }
+       } 
      })(marker, i));
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -66,7 +66,7 @@ document.getElementById("les").style.visibility = "visible";
 
          var dest=locations;
          infowindow.open(map, marker);
- 
+
         // window.location.href = this.url;
 
        }
