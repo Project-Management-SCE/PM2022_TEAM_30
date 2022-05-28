@@ -103,10 +103,62 @@ font-size:36px;
 
 const full_rates= <%- JSON.stringify(ratex) %>;
 let  glopal_rate=" ";
-glopal_rate+='<h1>The general rate: &nbsp &nbsp'+<%= avgx %>+'/5</h1>';
-
+let per_rate=" ";
+glopal_rate+='<h1>the general rate: &nbsp &nbsp'+<%= avgx %>+'/5</h1>';
 for (var i = 0; i < full_rates.length; i++) {
-  
+
+  if(full_rates[i][3]==1){
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+  '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5 </h3>'+
+  '</label>';
+  }
+  else if (full_rates[i][3]==2) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+  }
+  else if (full_rates[i][3]==3) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star "></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+  else if (full_rates[i][3]==4) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+  else if (full_rates[i][3]==5) {
+    per_rate+='<h3>'+'&nbsp'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '<span class="fa fa-star checked"></span>'+
+    '&nbsp &nbsp &nbsp'+full_rates[i][3]+'/5</h3>'+
+  '</label>';
+    }
+
+    glopal_rate+=per_rate;
 }
 document.getElementById("alpha_rate").innerHTML=glopal_rate;
 
