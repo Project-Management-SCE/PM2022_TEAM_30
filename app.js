@@ -72,7 +72,7 @@ const router = AdminJSExpress.buildAuthenticatedRouter(adminJs,{
 		}
 		return null;
 	}
-})
+}) 
 
 app.use(adminJs.options.rootPath, router)
 
