@@ -144,7 +144,6 @@ app.post('/sign_up', function(req,res){
       "Desc" : Desc
     }
 
-
 }
 
 
@@ -178,7 +177,7 @@ app.get("/Helper",function(req,res){
 		db.collection('messages').find({}).toArray().then((datam) => {
 
 
- 
+
 			//console.log(datas);
 			  var massegex = [];
 			  var massege=[];

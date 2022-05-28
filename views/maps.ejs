@@ -44,14 +44,13 @@
          infowindow.setContent( "<b>"+locations[i][3]+"</b>"+"<b>&nbsp;&nbsp;"+locations[i][10]+"/5"+"</b>"+"<br><b>price per hour: </b>"+locations[i][4]+
         "<b>  Supported Areas: </b>"+locations[i][6]+"</br>");
          infowindow.open(map, marker);
-       } 
+       }
      })(marker, i));
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
        return function() {
 
          infowindow.setContent(locations[i][0]);
-
          document.getElementById("titlex").innerHTML="<b>"+locations[i][9]+" detailes</b>";
          document.getElementById("namex").innerHTML="<b>Name: </b>"+locations[i][3];
          document.getElementById("emailx").innerHTML="<b>Email: </b>"+locations[i][7];
@@ -75,7 +74,6 @@ document.getElementById("les").style.visibility = "visible";
      //$("#les").fadeOut();
 
     }
-
 
   </script>
   <section class=" u-inner-form" id="sec-305b">
@@ -134,8 +132,6 @@ document.getElementById("les").style.visibility = "visible";
             <span class="fa fa-star "></span>
             <span class="fa fa-star"></span>
           </label>
-
-
 
 <script>
 function postToController() {
