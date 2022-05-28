@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'npx install'
+                sh 'npm install'
             }
         }
         stage('Test') {
