@@ -13,6 +13,9 @@ db.once('open', function(callback){
 })
 const app = express();
 
+
+
+
 app.use(express.static('views'));
 
 //session use
@@ -198,6 +201,7 @@ db.collection('ratings').find({rated:email}).toArray().then((ratem) => {
 		ratex.push(per_rate);
 }
 console.log("/////////////////////////////////////");
+	
 
 console.log(ratex);
 var sum =0;
