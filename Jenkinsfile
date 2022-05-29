@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Code Coverage') {
         steps {
-            sh 'jest --Coverage'
+            sh jest --Coverage
         }
         }
         stage('Deliver') {
