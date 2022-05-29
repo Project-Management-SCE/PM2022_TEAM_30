@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Code Coverage') {
         steps {
-            sh 'mvn clean cobertura:cobertura'
+            sh 'npm t -- --coverage'
         }
         }   
         stage('Deliver') {
