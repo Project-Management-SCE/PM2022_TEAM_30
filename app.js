@@ -198,6 +198,7 @@ db.collection('ratings').find({rated:email}).toArray().then((ratem) => {
 		ratex.push(per_rate);
 }
 console.log("/////////////////////////////////////");
+	
 
 console.log(ratex);
 var sum =0;
