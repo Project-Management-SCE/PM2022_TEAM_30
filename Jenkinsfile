@@ -24,7 +24,9 @@ pipeline {
         }   
         stage('Deliver') {
             steps {
-                sh 'npm install'
+
+              echo 'Finished using the web site'
+
             }
         }
     }
