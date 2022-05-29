@@ -20,7 +20,7 @@ pipeline {
         stage('Deliver') {
             steps {
 
-              output message: 'Finished using the web site? (Click "Proceed" to continue)'
+              echo 'Finished using the web site? (Click "Proceed" to continue)'
 
             }
         }
