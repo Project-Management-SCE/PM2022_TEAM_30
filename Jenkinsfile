@@ -19,9 +19,9 @@ pipeline {
         }
         stage('Code Coverage') {
         steps {
-            sh 'mvn clean cobertura:cobertura'
+            sh 'jest --Coverage'
         }
-        }   
+        }
         stage('Deliver') {
             steps {
 
