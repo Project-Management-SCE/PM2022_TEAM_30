@@ -427,7 +427,7 @@ else{
          console.log("success login an admin");
        }
 			 else{console.log(query);
-
+				
 
 				 dbo.collection("users").find(query).toArray(function(err, result) {
 						 if (err) throw err;
