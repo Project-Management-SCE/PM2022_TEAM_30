@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                sh 'npm install'
+                sh 'npm deliver'
             }
         }
     }
