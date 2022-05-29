@@ -68,3 +68,84 @@ describe('check /update Helpers', function () {
     });
 
 });
+describe('check /update_User', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/UpdateUser');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(200);
+    });
+
+});
+describe('check /update_Admin', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/UpdateAdmin');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(200);
+    });
+
+});
+describe('check /update_Users', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/users');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(500);
+    });
+
+});
+describe('check /helper_Form', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/helperForm');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(500);
+    });
+
+});
+describe('check /logged', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/logged');
+      expect(res.header['content-type']).toBe('text/plain; charset=utf-8');
+      expect(res.statusCode).toBe(302);
+    });
+
+});
+describe('check /new_password', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/new-password');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(200);
+    });
+
+});
+describe('check /forget', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/forget');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /alpha', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/alpha');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(500);
+    });
+
+});
+describe('check /login_Admin', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/admin/login');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(200);
+    });
+
+});

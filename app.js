@@ -143,7 +143,6 @@ app.post('/sign_up', function(req,res){
       "cost_per_hour": cost_per_hour,
       "Desc" : Desc
     }
-
 }
 
 
