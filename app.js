@@ -427,7 +427,7 @@ else{
          console.log("success login an admin");
        }
 			 else{console.log(query);
-				
+
 
 				 dbo.collection("users").find(query).toArray(function(err, result) {
 						 if (err) throw err;
@@ -578,7 +578,7 @@ app.post("/rest", function(req, res) {
     ,function(err) {
       if (err) throw err;
       else
-      console.log("The password has changed");
+      console.log(" password has changed");
     });
 
 
