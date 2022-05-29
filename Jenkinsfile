@@ -21,6 +21,7 @@ pipeline {
         steps {
             sh 'npm t -- --coverage'
         }
+        }
         stage('Deliver') {
             steps {
 
