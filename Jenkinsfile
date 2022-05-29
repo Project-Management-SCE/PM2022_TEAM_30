@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'chmod +x jest'
+                sh 'chmod +x test.js'
                 sh 'npm test'
             }
         }
