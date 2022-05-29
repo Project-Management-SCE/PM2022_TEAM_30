@@ -149,3 +149,12 @@ describe('check /login_Admin', function () {
     });
 
 });
+describe('check /login_Admin', function () {
+
+  test('responds to /', async () => {
+    const res = await request(app).get('/sign_up');
+    expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+    expect(res.statusCode).toBe(200);
+  });
+
+});
