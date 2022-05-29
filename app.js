@@ -14,6 +14,7 @@ db.once('open', function(callback){
 const app = express();
 
 
+
 app.use(express.static('views'));
 
 //session use
