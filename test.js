@@ -176,24 +176,7 @@ describe('check /login', function () {
     });
 
 });
-describe('check /login', function () {
 
-    test('responds to /', async () => {
-      const res = await request(app).get('/login');
-      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
-      expect(res.statusCode).toBe(404);
-    });
-
-});
-describe('check /login', function () {
-
-    test('responds to /', async () => {
-      const res = await request(app).get('/login');
-      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
-      expect(res.statusCode).toBe(404);
-    });
-
-});
 describe('check /email', function () {
 
     test('responds to /', async () => {
