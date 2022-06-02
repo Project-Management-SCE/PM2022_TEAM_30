@@ -2,7 +2,7 @@ var request = require('supertest');
 const assert = require('assert');
 var app = require('./app.js');
 
-describe('Home User', function () {
+describe('test Home User', function () {
 
     test('responds to /', async () => {
       const res = await request(app).get('/Home_user');
@@ -59,7 +59,7 @@ describe('check /Helpers', function () {
     });
 
 });
-describe('check /update Helpers', function () {
+describe('check /update Helper', function () {
 
     test('responds to /', async () => {
       const res = await request(app).get('/UpdateHelper');
@@ -146,6 +146,105 @@ describe('check /login_Admin', function () {
       const res = await request(app).get('/admin/login');
       expect(res.header['content-type']).toBe('text/html; charset=utf-8');
       expect(res.statusCode).toBe(200);
+    });
+
+});
+describe('check /sign_up', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/sign_up');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /Helper', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/Helper');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(500);
+    });
+
+});
+describe('check /login', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/login');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /login', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/login');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /login', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/login');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /email', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/email');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /forget', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/forget');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /rest', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/rest');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /update-user', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/update-user');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /update-Helper', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/update-Helper');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
+    });
+
+});
+describe('check /rating', function () {
+
+    test('responds to /', async () => {
+      const res = await request(app).get('/rating');
+      expect(res.header['content-type']).toBe('text/html; charset=utf-8');
+      expect(res.statusCode).toBe(404);
     });
 
 });
